@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import type { EmailClassification } from '@/types';
+import { queryKnowledgeBase, formatContextForPrompt } from '@/lib/knowledge-base/retrieval';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -34,6 +35,14 @@ export async function generateAutoReply(
   classification: EmailClassification
 ): Promise<string> {
   try {
+    // Query knowledge base for relevant context
+    const contexts = await queryKnowledgeBase(
+      classification.product,
+      subject + '\n' + body
+    );
+
+    const contextPrompt = formatContextForPrompt(contexts);
+
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
@@ -46,7 +55,7 @@ Classification:
 - Product: ${classification.product}
 - Intent: ${classification.intent}
 - Severity: ${classification.severity}
-- Summary: ${classification.summary}
+- Summary: ${classification.summary}${contextPrompt}
 
 Original email from ${from}:
 Subject: ${subject}

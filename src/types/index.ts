@@ -177,3 +177,23 @@ export interface PollResult {
   emailsProcessed: number;
   errors: string[];
 }
+
+// ============================================
+// Knowledge Base
+// ============================================
+
+export type KBFileType = 'pdf' | 'md' | 'txt';
+export type KBDocumentStatus = 'uploading' | 'processing' | 'embedded' | 'error';
+
+export interface KBDocument {
+  id: string;
+  product: string;
+  filename: string;
+  fileType: KBFileType;
+  fileSize: number;
+  status: KBDocumentStatus;
+  chunkCount: number;
+  errorMessage?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
