@@ -30,11 +30,11 @@ export async function POST(request: NextRequest) {
 
     // Validate file type
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
-    const validTypes: KBFileType[] = ['pdf', 'md', 'txt'];
+    const validTypes: KBFileType[] = ['md', 'txt'];
 
     if (!fileExtension || !validTypes.includes(fileExtension as KBFileType)) {
       return NextResponse.json(
-        { error: 'Invalid file type. Supported: PDF, MD, TXT' },
+        { error: 'Invalid file type. Supported: MD, TXT (PDF temporarily disabled)' },
         { status: 400 }
       );
     }

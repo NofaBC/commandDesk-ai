@@ -60,12 +60,15 @@ export async function extractText(
   }
 
   if (fileType === 'pdf') {
+    throw new Error('PDF support is currently disabled. Please convert your PDF to markdown or text format.');
+    /* PDF parsing disabled due to DOMMatrix issue in serverless environment
     // Dynamic import to avoid build issues
     const pdfParse = await import('pdf-parse');
     // Handle both ESM and CJS exports
     const parser = (pdfParse as any).default || pdfParse;
     const data = await parser(buffer);
     return data.text;
+    */
   }
 
   throw new Error(`Unsupported file type: ${fileType}`);
