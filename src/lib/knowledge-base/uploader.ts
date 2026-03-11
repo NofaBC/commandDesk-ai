@@ -131,21 +131,27 @@ export async function deleteDocument(documentId: string): Promise<boolean> {
 
     const data = doc.data() as KBDocument;
 
-    // Delete vectors from Pinecone
-    const index = getPineconeIndex();
-    const namespace = index.namespace(data.product);
+    // Delete vectors from Pinecone (only if chunks were successfully created)
+    if (data.chunkCount > 0 && data.status === 'embedded') {
+      try {
+        const index = getPineconeIndex();
+        const namespace = index.namespace(data.product);
 
-    // Delete all chunks for this document
-    const vectorIds: string[] = [];
-    for (let i = 0; i < data.chunkCount; i++) {
-      vectorIds.push(`${documentId}-chunk-${i}`);
+        // Delete all chunks for this document
+        const vectorIds: string[] = [];
+        for (let i = 0; i < data.chunkCount; i++) {
+          vectorIds.push(`${documentId}-chunk-${i}`);
+        }
+
+        await namespace.deleteMany(vectorIds);
+      } catch (pineconeError) {
+        // Log but don't fail if Pinecone deletion fails
+        console.warn(`Pinecone deletion failed for ${documentId}:`, pineconeError);
+        // Continue to delete Firestore record anyway
+      }
     }
 
-    if (vectorIds.length > 0) {
-      await namespace.deleteMany(vectorIds);
-    }
-
-    // Delete Firestore record
+    // Delete Firestore record (always delete, even if Pinecone failed)
     await docRef.delete();
 
     return true;
