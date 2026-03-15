@@ -38,9 +38,10 @@ export async function fetchUnreadEmails(
 ): Promise<ParsedEmail[]> {
   const gmail = getGmailClient();
 
+  // Check both inbox and spam to avoid missing legitimate emails
   const res = await gmail.users.messages.list({
     userId: 'me',
-    q: 'is:unread in:inbox',
+    q: 'is:unread (in:inbox OR in:spam)',
     maxResults,
   });
 
