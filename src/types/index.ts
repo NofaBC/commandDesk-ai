@@ -179,6 +179,33 @@ export interface PollResult {
 }
 
 // ============================================
+// Subscriber Authorization
+// ============================================
+
+export type SubscriptionStatus = 'active' | 'trial' | 'cancelled' | 'past_due' | 'unpaid';
+
+export interface Subscriber {
+  id: string;
+  email: string;
+  name?: string;
+  status: SubscriptionStatus;
+  plan: string;
+  products: string[]; // Products they have access to
+  stripeCustomerId?: string;
+  stripeSubscriptionId?: string;
+  trialEndsAt?: Date;
+  currentPeriodEnd?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface SubscriberVerificationResult {
+  isSubscriber: boolean;
+  subscriber?: Subscriber;
+  reason?: 'active' | 'trial' | 'not_found' | 'cancelled' | 'expired';
+}
+
+// ============================================
 // Knowledge Base
 // ============================================
 

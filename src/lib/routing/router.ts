@@ -14,6 +14,8 @@ import {
   updateInteractionRouting,
   updateInteractionStatus,
 } from '@/lib/firebase/interactions';
+import { verifySubscriber } from '@/lib/auth/subscriber';
+import { getNonSubscriberResponse, getExpiredSubscriberResponse } from '@/lib/email/templates';
 import type { ParsedEmail } from '@/lib/email/gmail';
 
 export interface ProcessResult {
@@ -23,10 +25,12 @@ export interface ProcessResult {
   responseSent: boolean;
   techSupportCaseId?: string;
   error?: string;
+  subscriberStatus?: 'active' | 'trial' | 'not_found' | 'cancelled' | 'expired';
 }
 
 /**
  * Process a single email through the full pipeline:
+ * 0. Verify subscriber status (authorization gate)
  * 1. Log the interaction
  * 2. Classify with AI
  * 3. Route based on classification
@@ -38,6 +42,49 @@ export async function processEmail(email: ParsedEmail): Promise<ProcessResult> {
   let interactionId = '';
 
   try {
+    // Step 0: Verify subscriber status (AUTHORIZATION GATE)
+    const subscriberResult = await verifySubscriber(email.from);
+    
+    if (!subscriberResult.isSubscriber) {
+      // Non-subscriber - send redirect email and skip full pipeline
+      console.log(`Non-subscriber email from ${email.from}: ${subscriberResult.reason}`);
+      
+      // Determine response based on reason
+      let responseBody: string;
+      if (subscriberResult.reason === 'cancelled' || subscriberResult.reason === 'expired') {
+        responseBody = getExpiredSubscriberResponse(email.fromName);
+      } else {
+        responseBody = getNonSubscriberResponse(email.fromName);
+      }
+      
+      // Send non-subscriber response
+      await sendReplyEmail({
+        to: email.from,
+        subject: email.subject,
+        body: responseBody,
+        replyToMessageId: email.id,
+      });
+      
+      // Return early - skip full pipeline
+      return {
+        interactionId: '',
+        classification: {
+          product: 'unknown',
+          intent: 'general',
+          severity: 'low',
+          summary: 'Non-subscriber inquiry redirected to website',
+          confidence: 1,
+          language: 'en',
+        },
+        routingOutcome: 'auto_replied',
+        responseSent: true,
+        subscriberStatus: subscriberResult.reason,
+      };
+    }
+    
+    // SUBSCRIBER VERIFIED - Continue with full pipeline
+    console.log(`Subscriber verified: ${email.from} (${subscriberResult.reason})`);
+
     // Step 1: Create interaction record
     interactionId = await createInteraction({
       emailId: email.id,
