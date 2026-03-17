@@ -291,10 +291,10 @@ While our AI is trained on best practices, it's a tool to supplement—not repla
 - SLA guarantees
 
 ### How do I get Enterprise pricing?
-Contact our sales team: farhad@nofabusinessconsulting.com or call us for a custom quote based on your needs.
+Contact supportdesk@nofabusinessconsulting.com for information about custom arrangements.
 
 ### Can universities use CareerPilot AI?
-Yes! We offer special pricing for educational institutions. Contact farhad@nofabusinessconsulting.com for more information.
+Yes! We offer special pricing for educational institutions. Contact supportdesk@nofabusinessconsulting.com for more information.
 
 ### Is there a minimum number of users for Enterprise?
 Enterprise plans typically start at 50 users, but we're flexible. Contact us to discuss your specific needs.
@@ -334,8 +334,7 @@ Yes! If you contact us within 7 days of being charged, we'll issue a full refund
 ## Still Have Questions?
 
 **Email Support**: supportdesk@nofabusinessconsulting.com  
-**Sales Inquiries**: farhad@nofabusinessconsulting.com  
-**Live Chat**: Available in app (Mon-Fri, 9 AM - 6 PM EST)  
+**General Inquiries**: supportdesk@nofabusinessconsulting.com  
 **Knowledge Base**: https://nofabusinessconsulting.com/careerpilot-ai/help
 
 We typically respond to all inquiries within 24-48 hours, depending on your plan.
