@@ -1,171 +1,261 @@
-# CareerPilot AI - Pricing Plans
+CareerPilot AI - Pricing Plans
+7-Day Free Trial
 
-## Free Trial
+7-Day Free Trial — No credit card required
+Try CareerPilot AI and explore the platform before upgrading.
 
-**14-Day Free Trial** - No credit card required  
-Try all Professional features free for 14 days when you sign up.
+During the free trial, users get access to the platform experience and can use a limited amount of credits to test core AI features.
 
----
+How Credits Work
 
-## Free Plan - $0/month
+CareerPilot AI uses a credit-based system to keep pricing fair and predictable.
 
-Perfect for exploring career options and basic tools.
+Credit Costs Per Action
+Action	Credits	What You Get
+Job Search	8 credits	Up to 10 matched jobs with AI fit scores
+AI Cover Letter	15 credits	One tailored cover letter for a selected job
+Interview Practice	25 credits	One AI-powered interview coaching session
+Resume Builder	0 credits	Always free — build and export resumes anytime
+Credit Rules
 
-### Features Included:
-- ✅ Basic career assessment
-- ✅ 3 AI coaching sessions per month
-- ✅ Resume builder (1 resume)
-- ✅ Access to learning resources library
-- ✅ Job search dashboard (up to 10 applications)
-- ✅ Community forum access
+Subscription credits reset monthly
 
-### Limitations:
-- ❌ No interview simulator
-- ❌ No salary insights
-- ❌ No cover letter generator
-- ❌ Limited AI coaching minutes
-- ❌ No LinkedIn optimization
-- ❌ Basic templates only
+Subscription credits do not roll over
 
-**Best For:** Career explorers and students getting started.
+Top-up credits never expire
 
----
+When using the platform, subscription credits are used first, then top-up credits
 
-## Starter Plan - $29/month
+Free Plan - $0/month
 
-**Or $290/year** (save $58 with annual billing)
+A simple starting point for exploring the platform.
 
-Ideal for early-career professionals and active job seekers.
+Included:
 
-### Everything in Free, Plus:
-- ✅ **Unlimited AI coaching sessions**
-- ✅ **Interview simulator** with 50+ practice questions
-- ✅ **Resume builder** (up to 3 resumes)
-- ✅ **Cover letter generator**
-- ✅ **Job tracking** (up to 50 applications)
-- ✅ **Salary insights** for your target roles
-- ✅ **Email support** (48-hour response)
-- ✅ **Premium resume templates**
-- ✅ **Basic ATS optimization**
+40 credits per month
 
-### Limitations:
-- ❌ No LinkedIn profile optimization
-- ❌ No video interview practice
-- ❌ No personalized career roadmap
-- ❌ No advanced analytics
-- ❌ Standard support only
+Resume builder (always free)
 
-**Best For:** Job seekers who need essential tools without premium features.
+Job search dashboard
 
----
+Basic profile builder
 
-## Professional Plan - $79/month
+Application tracking
 
-**Or $790/year** (save $158 with annual billing)
+Access to learning resources
 
-Comprehensive career development for serious professionals.
+What You Can Do:
 
-### Everything in Starter, Plus:
-- ✅ **Unlimited resumes and cover letters**
-- ✅ **LinkedIn profile optimization**
-- ✅ **Video interview practice** with AI feedback
-- ✅ **Personalized career roadmap**
-- ✅ **Advanced ATS optimization** (95%+ pass rate)
-- ✅ **Job tracking** (unlimited applications)
-- ✅ **Company research insights**
-- ✅ **Salary negotiation coaching**
-- ✅ **Skills gap analysis**
-- ✅ **Priority email support** (24-hour response)
-- ✅ **Career pivot guidance**
-- ✅ **Industry-specific templates**
-- ✅ **Advanced analytics dashboard**
+~5 job searches
 
-### Professional-Exclusive Features:
-- 🎯 AI-powered job matching
-- 🎯 Market trend analysis
-- 🎯 Competitive salary data
-- 🎯 Weekly career insights report
-- 🎯 Export to multiple formats
-- 🎯 Portfolio website builder
+~2 AI cover letters
 
-**Best For:** Mid-career professionals, career changers, and those seeking comprehensive support.
+~1 interview practice session
 
----
+Or mix and match usage
 
-## Enterprise Plan - Custom Pricing
+Best For:
 
-Tailored solutions for teams, universities, and organizations.
+Career explorers, students, and new users testing the platform.
 
-### Enterprise Features:
-- ✅ Everything in Professional
-- ✅ **Dedicated account manager**
-- ✅ **Custom branding** (white-label available)
-- ✅ **Team dashboard** and analytics
-- ✅ **SSO integration**
-- ✅ **API access**
-- ✅ **Bulk user management**
-- ✅ **Custom integrations**
-- ✅ **Priority phone support**
-- ✅ **Training and onboarding**
-- ✅ **Service Level Agreement (SLA)**
-- ✅ **Usage reporting**
+Starter Plan - $39/month
 
-**Best For:** HR teams, career centers, outplacement firms, and educational institutions.
+For active job seekers running a focused 60–90 day campaign.
 
-**Contact sales** for custom pricing and implementation: sales@nofabusinessconsulting.com
+Included:
 
----
+500 credits per month
 
-## Plan Comparison Summary
+Resume builder (unlimited)
 
-| Feature | Free | Starter | Professional | Enterprise |
-|---------|------|---------|--------------|------------|
-| **Price** | $0 | $29/mo | $79/mo | Custom |
-| AI Coaching | 3/month | Unlimited | Unlimited | Unlimited |
-| Resumes | 1 | 3 | Unlimited | Unlimited |
-| Interview Simulator | ❌ | ✅ | ✅ + Video | ✅ + Video |
-| Cover Letters | ❌ | ✅ | Unlimited | Unlimited |
-| LinkedIn Optimization | ❌ | ❌ | ✅ | ✅ |
-| Salary Insights | ❌ | ✅ | ✅ Advanced | ✅ Advanced |
-| Job Tracking | 10 apps | 50 apps | Unlimited | Unlimited |
-| Career Roadmap | ❌ | ❌ | ✅ | ✅ |
-| ATS Optimization | ❌ | Basic | Advanced | Advanced |
-| Support | Community | Email 48h | Email 24h | Phone + Dedicated |
-| Analytics | ❌ | ❌ | ✅ | ✅ + Team |
+Job search with AI fit scores
 
----
+AI cover letter generation
 
-## Frequently Asked Questions
+Interview Coach
 
-### Can I change plans anytime?
-Yes! Upgrade or downgrade anytime. Upgrades are prorated, downgrades take effect at next billing cycle.
+Application tracking
 
-### What payment methods do you accept?
-We accept all major credit cards (Visa, Mastercard, Amex, Discover) and PayPal.
+Dashboard analytics
 
-### Is there a refund policy?
-Yes. If you're not satisfied within 30 days of your first paid subscription, we offer a full refund.
+Email support
 
-### Can I cancel anytime?
-Absolutely. No long-term contracts. Cancel anytime from your account settings.
+What You Can Do:
 
-### What happens to my data if I downgrade or cancel?
-Your data is preserved for 90 days. You can export all your data anytime from your account settings.
+~62 job searches
 
-### Do you offer student or nonprofit discounts?
-Yes! Students with valid .edu email get 25% off. Nonprofits get 20% off. Contact support@nofabusinessconsulting.com
+OR ~33 AI cover letters
 
-### Can I try Professional features before buying?
-Yes! Every new user gets a 14-day free trial with access to all Professional features.
+OR ~20 interview practice sessions
 
----
+Or a mix of all three
 
-## Ready to Get Started?
+Best For:
 
-**Start Your Free Trial Today**  
-No credit card required. 14 days of full access to Professional features.
+Active job seekers who want strong AI support without moving into power-user territory.
+
+Pro Plan - $99/month
+
+For serious professionals and intensive job search campaigns.
+
+Included:
+
+1,200 credits per month
+
+Everything in Starter
+
+Priority support
+
+Early access to new features
+
+Advanced analytics
+
+Higher-volume AI usage for intensive search periods
+
+What You Can Do:
+
+~150 job searches
+
+OR ~80 AI cover letters
+
+OR ~48 interview practice sessions
+
+Or a high-volume mixed workflow
+
+Best For:
+
+Mid-career professionals, career changers, and users running an aggressive job search.
+
+Credit Top-Ups (One-Time Purchases)
+
+Need more credits? Buy additional credits anytime.
+
+Small Pack — $15
+
+200 credits
+
+Good for quick extra usage
+
+Credits never expire
+
+Medium Pack — $40
+
+600 credits
+
+Better value for heavier usage months
+
+Credits never expire
+
+Large Pack — $90
+
+1,500 credits
+
+Best value for high-volume users
+
+Credits never expire
+
+Top-up credits are ideal for users who need extra searches, extra cover letters, or more interview practice during a busy period.
+
+Plan Comparison Summary
+Feature	Free	Starter	Pro
+Price	$0	$39/month	$99/month
+Monthly Credits	40	500	1,200
+Resume Builder	Unlimited	Unlimited	Unlimited
+AI Job Search + Fit Scores	✅	✅	✅
+AI Cover Letters	Limited by credits	Included via credits	Included via credits
+Interview Coach	Limited by credits	Included via credits	Included via credits
+Application Tracking	✅	✅	✅
+Dashboard Analytics	Basic	✅	Advanced
+Support	Community / self-service	Email support	Priority support
+Top-Up Eligibility	✅	✅	✅
+Important Policy Notes
+Do credits roll over?
+
+No. Monthly subscription credits reset each billing cycle and do not roll over.
+
+Do purchased credit packs expire?
+
+No. Top-up credits never expire and remain in the account until used.
+
+Can I change plans anytime?
+
+Yes. Users can upgrade or downgrade anytime. Changes apply according to the billing cycle and Stripe billing rules.
+
+Can I cancel anytime?
+
+Yes. There are no long-term contracts. Cancel anytime from your account settings once billing is live.
+
+What happens when I run out of credits?
+
+You can:
+
+wait for your monthly subscription credits to reset, or
+
+purchase a top-up pack
+
+What happens to my data if I cancel?
+
+Your account data can be retained for a limited period based on product policy, and export options may be offered in future releases.
+
+Supported Markets
+
+CareerPilot AI currently focuses on English-language markets for launch, including major English-speaking job markets such as:
+
+United States
+
+Canada
+
+United Kingdom
+
+Australia
+
+Other supported English-language markets as available
+
+Additional countries and country-specific resume/CV formats may be added in future updates.
+
+Frequently Asked Questions
+Why use a credit system?
+
+The credit system keeps CareerPilot AI fair, predictable, and sustainable. Different AI actions have different costs, and credits make it easier for users to choose how they want to use the platform.
+
+Why is the resume builder free?
+
+We want every user to have access to a high-quality resume builder, even on the Free plan.
+
+Is this better than “unlimited”?
+
+Yes. Credits give users flexibility while keeping the platform responsive and reliable. Instead of paying for inflated unlimited plans, users only consume credits when using AI-powered features.
+
+Can I use CareerPilot AI without paying?
+
+Yes. The Free plan includes 40 credits per month plus unlimited resume building.
+
+Who should choose Starter?
+
+Starter is ideal for active job seekers who want regular AI help across several weeks of searching and applying.
+
+Who should choose Pro?
+
+Pro is ideal for professionals running a high-volume campaign, career changers, or users who want the strongest level of support and flexibility.
+
+Ready to Get Started?
+
+Start your 7-day free trial today
+Explore CareerPilot AI, build your profile, and test the platform before upgrading.
 
 👉 Sign up at: https://nofabusinessconsulting.com/careerpilot-ai
 
-**Questions?**  
-Contact our team: support@nofabusinessconsulting.com
+Questions?
+Contact: supportdesk@nofabusinessconsulting.com
+
+Internal Notes for Team (Optional - remove if public)
+
+Subscription credits: no rollover
+
+Top-up credits: never expire
+
+Credit usage order: subscription first, then top-up
+
+Pricing structure aligned to protected-margin model
+
+Public copy avoids publishing internal margin assumptions or revenue projections
