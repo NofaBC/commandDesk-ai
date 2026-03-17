@@ -22,14 +22,14 @@ Analyzes your skills, experience, interests, and goals to provide personalized c
 ### AI-Powered Resume Creation
 - **Smart Content Suggestions**: AI recommends relevant skills and accomplishments
 - **ATS Optimization**: Ensures your resume passes Applicant Tracking Systems
-- **Industry Templates**: 50+ professional templates for different industries
+- **Industry Templates**: 50+ Pro templates for different industries
 - **Real-Time Feedback**: Get instant suggestions as you write
 - **Multiple Formats**: Export as PDF, DOCX, or plain text
 
 ### Resume Limits by Plan
 - **Free**: 1 resume
 - **Starter**: 3 resumes
-- **Professional**: Unlimited resumes
+- **Pro**: Unlimited resumes
 - **Enterprise**: Unlimited resumes
 
 ### Key Features
@@ -49,7 +49,7 @@ Prepare for interviews with AI-powered practice sessions.
 ### Features
 - **Question Bank**: 500+ real interview questions by industry
 - **AI Interviewer**: Natural conversation with follow-up questions
-- **Video Practice**: Record yourself and get feedback (Professional+)
+- **Video Practice**: Record yourself and get feedback (Pro+)
 - **Behavioral Questions**: STAR method coaching
 - **Technical Questions**: Industry-specific technical prep
 - **Performance Analytics**: Track improvement over time
@@ -57,7 +57,7 @@ Prepare for interviews with AI-powered practice sessions.
 ### Available In
 - Free Plan: ❌ Not available
 - Starter: ✅ Text-based simulator
-- Professional: ✅ Text + video practice with AI feedback
+- Pro: ✅ Text + video practice with AI feedback
 - Enterprise: ✅ All features + custom scenarios
 
 ---
@@ -101,7 +101,7 @@ Track applications, interviews, and follow-ups all in one place.
 ### Tracking Limits
 - **Free**: 10 applications
 - **Starter**: 50 applications
-- **Professional**: Unlimited applications
+- **Pro**: Unlimited applications
 - **Enterprise**: Unlimited + team visibility
 
 ---
@@ -124,7 +124,7 @@ See exactly what changed and why, with projected impact on profile views and con
 
 ### Available In
 - Free & Starter: ❌ Not available
-- Professional & Enterprise: ✅ Available
+- Pro & Enterprise: ✅ Available
 
 ---
 
@@ -170,7 +170,7 @@ Access comprehensive salary data for informed negotiations.
 ### Available In
 - Free: ❌ Not available
 - Starter: ✅ Basic salary ranges
-- Professional: ✅ Advanced data with negotiation coaching
+- Pro: ✅ Advanced data with negotiation coaching
 - Enterprise: ✅ All features + team benchmarks
 
 ---
@@ -190,7 +190,7 @@ AI identifies skill gaps between your current profile and target roles.
 
 ### Available In
 - Free & Starter: ❌ Not available
-- Professional & Enterprise: ✅ Available
+- Pro & Enterprise: ✅ Available
 
 ---
 
@@ -209,7 +209,7 @@ AI creates a step-by-step plan to reach your career goals.
 
 ### Available In
 - Free & Starter: ❌ Not available
-- Professional & Enterprise: ✅ Available
+- Pro & Enterprise: ✅ Available
 
 ---
 
@@ -229,7 +229,7 @@ Get insights on companies before applying or interviewing.
 
 ### Available In
 - Free & Starter: ❌ Not available
-- Professional & Enterprise: ✅ Available
+- Pro & Enterprise: ✅ Available
 
 ---
 
@@ -249,7 +249,7 @@ Comprehensive analytics to measure and improve your job search effectiveness.
 
 ### Available In
 - Free & Starter: ❌ Not available
-- Professional: ✅ Personal analytics
+- Pro: ✅ Personal analytics
 - Enterprise: ✅ Personal + team analytics
 
 ---
@@ -264,7 +264,7 @@ Export your data and integrate with other tools.
 - Data exports (CSV, JSON)
 - Calendar integrations (Google, Outlook)
 - Email integrations
-- Portfolio website generation (Professional+)
+- Portfolio website generation (Pro+)
 
 ### API Access
 - Enterprise plans include API access for custom integrations
@@ -308,7 +308,7 @@ Access CareerPilot AI from any device.
 ### Customer Support
 - **Free**: Community forum only
 - **Starter**: Email support (48-hour response)
-- **Professional**: Priority email (24-hour response)
+- **Pro**: Priority email (24-hour response)
 - **Enterprise**: Phone + dedicated account manager
 
 ---

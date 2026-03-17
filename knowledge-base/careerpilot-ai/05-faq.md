@@ -3,13 +3,13 @@
 ## General Questions
 
 ### What is CareerPilot AI?
-CareerPilot AI is an AI-powered career development platform that provides personalized guidance for job seekers and professionals. It includes resume building, interview preparation, job tracking, career coaching, and more—all powered by artificial intelligence.
+CareerPilot AI is an AI-powered career development platform that provides personalized guidance for job seekers and Pros. It includes resume building, interview preparation, job tracking, career coaching, and more—all powered by artificial intelligence.
 
 ### Who is CareerPilot AI for?
 - Recent graduates entering the job market
 - Active job seekers looking for new opportunities
-- Professionals considering a career change
-- Mid-career professionals seeking advancement
+- Pros considering a career change
+- Mid-career Pros seeking advancement
 - Anyone looking to improve their career prospects
 
 ### How is this different from other career tools?
@@ -22,13 +22,13 @@ CareerPilot AI is AI-first, meaning every feature is powered by machine learning
 ### How much does CareerPilot AI cost?
 - **Free Plan**: $0/month - Basic features
 - **Starter Plan**: $29/month (or $290/year)
-- **Professional Plan**: $79/month (or $790/year)
+- **Pro Plan**: $79/month (or $790/year)
 - **Enterprise Plan**: Custom pricing
 
 See our full pricing page for detailed feature comparison.
 
 ### Is there a free trial?
-Yes! Every new user gets a **14-day free trial** with access to all Professional plan features. No credit card required to start.
+Yes! Every new user gets a **14-day free trial** with access to all Pro plan features. No credit card required to start.
 
 ### Can I change plans anytime?
 Absolutely! You can upgrade or downgrade your plan at any time:
@@ -111,14 +111,14 @@ Yes! The resume builder can import existing resumes in PDF or DOCX format. The A
 ### How many resumes can I create?
 - **Free**: 1 resume
 - **Starter**: 3 resumes
-- **Professional**: Unlimited resumes
+- **Pro**: Unlimited resumes
 - **Enterprise**: Unlimited resumes
 
 ### What is ATS optimization?
 ATS (Applicant Tracking System) optimization ensures your resume can be properly read by the software many companies use to screen applications. Our AI checks format, keywords, and structure to maximize your chances of passing ATS filters.
 
 ### Does the interview simulator really help?
-Yes! Research shows that practice significantly improves interview performance. Our AI simulator provides realistic questions, instant feedback, and tracks your improvement over time. Professional plan users can also practice with video for more comprehensive feedback.
+Yes! Research shows that practice significantly improves interview performance. Our AI simulator provides realistic questions, instant feedback, and tracks your improvement over time. Pro plan users can also practice with video for more comprehensive feedback.
 
 ### How accurate is the salary data?
 Our salary data is sourced from multiple verified databases and updated regularly. We provide ranges based on location, experience, industry, and company size. While we strive for accuracy, actual salaries may vary.
@@ -175,7 +175,7 @@ Our servers are hosted in secure data centers in the United States with redundan
 - Email: supportdesk@nofabusinessconsulting.com
 - Response time: Within 48 hours
 
-**Professional Plan**:
+**Pro Plan**:
 - Priority email support
 - Response time: Within 24 hours
 - Live chat (Mon-Fri, 9 AM - 6 PM EST)
@@ -231,7 +231,7 @@ Our AI will suggest the optimal length based on your experience.
 
 ### Should I use a creative or traditional template?
 **Creative industries** (design, marketing, media): Creative templates okay
-**Traditional industries** (finance, law, healthcare): Stick to professional templates
+**Traditional industries** (finance, law, healthcare): Stick to Pro templates
 **Tech/Startup**: Moderate creativity acceptable
 
 When in doubt, choose a clean, ATS-friendly template.
@@ -241,13 +241,13 @@ When in doubt, choose a clean, ATS-friendly template.
 2. For each application, create a targeted version
 3. Use our "Job Match" feature to highlight relevant skills
 4. Adjust summary and keywords based on job description
-5. Professional plan users can create unlimited tailored versions
+5. Pro plan users can create unlimited tailored versions
 
 ### What file format should I use?
 **PDF** is recommended for most applications:
 - Preserves formatting
 - Works on any device
-- Looks professional
+- Looks Pro
 
 Use **DOCX** only if specifically requested by the employer.
 
@@ -262,7 +262,7 @@ As often as you need! Common patterns:
 - **Skill development**: Bi-weekly for progress reviews
 - **Career exploration**: Monthly for direction
 
-There's no limit on Professional and above plans.
+There's no limit on Pro and above plans.
 
 ### Can the AI help me negotiate salary?
 Yes! Our AI can help with:
@@ -272,11 +272,11 @@ Yes! Our AI can help with:
 - Timing and strategy advice
 - Evaluating offers and counteroffers
 
-Professional plan includes advanced salary negotiation coaching.
+Pro plan includes advanced salary negotiation coaching.
 
 ### What if the AI gives me bad advice?
 While our AI is trained on best practices, it's a tool to supplement—not replace—your judgment. For major career decisions, we recommend:
-- Consulting with human professionals
+- Consulting with human Pros
 - Seeking multiple perspectives
 - Considering your unique circumstances
 - Using the AI as one input among many
@@ -286,7 +286,7 @@ While our AI is trained on best practices, it's a tool to supplement—not repla
 ## Enterprise & Teams
 
 ### What is included in Enterprise plans?
-- Everything in Professional
+- Everything in Pro
 - Dedicated account manager
 - Custom branding (white-label)
 - Team dashboard and analytics

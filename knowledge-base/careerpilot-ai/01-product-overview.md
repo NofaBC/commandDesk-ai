@@ -2,7 +2,7 @@
 
 ## What is CareerPilot AI?
 
-CareerPilot AI is an intelligent career development platform that combines artificial intelligence with professional coaching expertise to help professionals at every stage of their career journey. Whether you're exploring new career paths, preparing for interviews, or optimizing your job search, CareerPilot AI provides personalized guidance and actionable insights.
+CareerPilot AI is an intelligent career development platform that combines artificial intelligence with Pro coaching expertise to help Pros at every stage of their career journey. Whether you're exploring new career paths, preparing for interviews, or optimizing your job search, CareerPilot AI provides personalized guidance and actionable insights.
 
 ## Core Capabilities
 
@@ -38,21 +38,21 @@ CareerPilot AI is an intelligent career development platform that combines artif
 - Skill gap analysis
 - Learning resource recommendations
 - Career pivot guidance
-- Professional development planning
+- Pro development planning
 
 ## Who Is It For?
 
-### Early Career Professionals
-Recent graduates and entry-level professionals looking to launch their careers with confidence.
+### Early Career Pros
+Recent graduates and entry-level Pros looking to launch their careers with confidence.
 
 ### Mid-Career Changers
-Professionals exploring new industries or roles, seeking strategic guidance for successful transitions.
+Pros exploring new industries or roles, seeking strategic guidance for successful transitions.
 
 ### Job Seekers
 Active job hunters who need tools to optimize applications, prepare for interviews, and track opportunities.
 
 ### Career Advancers
-Experienced professionals looking to level up, negotiate better positions, or plan long-term career growth.
+Experienced Pros looking to level up, negotiate better positions, or plan long-term career growth.
 
 ## Key Differentiators
 
@@ -60,7 +60,7 @@ Experienced professionals looking to level up, negotiate better positions, or pl
 2. **Personalization**: Tailored advice based on your unique background and goals
 3. **Comprehensive Platform**: All career tools in one place, no need for multiple services
 4. **Always Available**: 24/7 AI coaching support, no scheduling required
-5. **Affordable**: Professional-grade career services at a fraction of traditional coaching costs
+5. **Affordable**: Pro-grade career services at a fraction of traditional coaching costs
 
 ## Getting Started
 

@@ -7,7 +7,7 @@
 2. Click "Start Free Trial" or "Sign Up"
 3. Enter your email address and create a password
 4. Verify your email (check spam folder if needed)
-5. Your 7-day free trial with Professional features starts immediately!
+5. Your 7-day free trial with Pro features starts immediately!
 
 **No credit card required for the trial.**
 
@@ -73,7 +73,7 @@ After completion, you'll receive:
    - Click "Create New Resume"
 
 2. **Choose a Template**
-   - Browse 50+ professional templates
+   - Browse 50+ Pro templates
    - Filter by industry or style
    - Preview before selecting
 
@@ -113,7 +113,7 @@ After completion, you'll receive:
 3. **Preview**: See how it looks in different formats
 4. **Export**: Download as PDF (recommended for applications)
 
-**Resume Limits**: Remember your plan's resume limit (Free: 1, Starter: 3, Professional+: Unlimited)
+**Resume Limits**: Remember your plan's resume limit (Free: 1, Starter: 3, Pro+: Unlimited)
 
 ---
 
@@ -191,7 +191,7 @@ After completion, you'll receive:
 
 3. **Start Practice Session**
    - AI asks realistic interview questions
-   - Respond via text (or video in Professional+)
+   - Respond via text (or video in Pro+)
    - Receive instant feedback on your answers
 
 4. **Review Performance**
@@ -199,7 +199,7 @@ After completion, you'll receive:
    - Get improvement suggestions
    - Track progress over time
 
-### Video Practice (Professional+ Plans)
+### Video Practice (Pro+ Plans)
 - Record yourself answering questions
 - AI analyzes verbal and non-verbal cues
 - Get feedback on:
@@ -223,7 +223,7 @@ After completion, you'll receive:
 
 **Week 2: Deep Dive**
 - Practice interviewing
-- Optimize LinkedIn (Professional+)
+- Optimize LinkedIn (Pro+)
 - Research target companies
 - Generate customized cover letters
 - Review analytics
@@ -274,7 +274,7 @@ Yes! Upgrade or downgrade anytime. Changes take effect immediately.
 **Email Support**
 - Free: Community forum only
 - Starter: supportdesk@nofabusinessconsulting.com (48-hour response)
-- Professional: Priority support (24-hour response)
+- Pro: Priority support (24-hour response)
 - Enterprise: Dedicated account manager + phone support
 
 **Live Chat**
@@ -300,7 +300,7 @@ Yes! Upgrade or downgrade anytime. Changes take effect immediately.
 5. Update profile as you learn new skills
 
 ### For Career Changers
-1. Complete skills gap analysis (Professional+)
+1. Complete skills gap analysis (Pro+)
 2. Build pivot-focused resume highlighting transferable skills
 3. Research target industry thoroughly
 4. Network strategy planning with AI coach
