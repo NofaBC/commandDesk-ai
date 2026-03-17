@@ -172,7 +172,7 @@ Our servers are hosted in secure data centers in the United States with redundan
 **Free Plan**: Community forum access
 
 **Starter Plan**: 
-- Email: support@nofabusinessconsulting.com
+- Email: supportdesk@nofabusinessconsulting.com
 - Response time: Within 48 hours
 
 **Professional Plan**:
