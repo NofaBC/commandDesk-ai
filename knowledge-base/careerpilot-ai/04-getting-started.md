@@ -7,7 +7,7 @@
 2. Click "Start Free Trial" or "Sign Up"
 3. Enter your email address and create a password
 4. Verify your email (check spam folder if needed)
-5. Your 14-day free trial with Professional features starts immediately!
+5. Your 7-day free trial with Professional features starts immediately!
 
 **No credit card required for the trial.**
 
