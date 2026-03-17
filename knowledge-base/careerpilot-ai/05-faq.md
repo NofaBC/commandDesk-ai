@@ -39,7 +39,15 @@ Absolutely! You can upgrade or downgrade your plan at any time:
 We accept all major credit cards (Visa, Mastercard, American Express, Discover) and PayPal.
 
 ### Do you offer refunds?
-Yes. If you're not satisfied within the first 30 days of your paid subscription, we'll provide a full refund. Just contact support@nofabusinessconsulting.com
+We offer a **7-day refund period** for first-time paid subscriptions only. If you are not satisfied with CareerPilot AI, contact supportdesk@nofabusinessconsulting.com within 7 days of your initial subscription purchase and we will review your request.
+
+**Refunds do not apply to:**
+- One-time credit top-ups (all credit pack purchases are final)
+- Subscription renewals
+- Accounts with excessive or abusive usage
+- Purchases made after a prior refund
+
+This policy ensures fairness while protecting against abuse of our consumable credit system.
 
 ### Can I get an invoice for my subscription?
 Yes! Invoices are automatically generated and sent to your email after each payment. You can also download them from your account settings.
@@ -327,7 +335,9 @@ Common fixes:
 You can reactivate anytime within 90 days without losing data.
 
 ### I forgot to cancel before my trial ended. Can I get a refund?
-Yes! If you contact us within 7 days of being charged, we'll issue a full refund. Email support@nofabusinessconsulting.com
+Yes! If you contact us within 7 days of being charged for your first paid subscription, we'll review your refund request. Email supportdesk@nofabusinessconsulting.com
+
+Please note: This is a one-time courtesy and falls under our 7-day first-time subscription refund policy.
 
 ---
 

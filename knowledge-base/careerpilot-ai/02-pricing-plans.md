@@ -197,6 +197,16 @@ What happens to my data if I cancel?
 
 Your account data can be retained for a limited period based on product policy, and export options may be offered in future releases.
 
+What is the refund policy?
+
+We offer a 7-day refund period for first-time paid subscriptions only. Contact supportdesk@nofabusinessconsulting.com within 7 days of your initial subscription purchase.
+
+Refunds do not apply to:
+- One-time credit top-ups (all credit pack purchases are final)
+- Subscription renewals
+- Accounts with excessive or abusive usage
+- Purchases made after a prior refund
+
 Supported Markets
 
 CareerPilot AI currently focuses on English-language markets for launch, including major English-speaking job markets such as:
