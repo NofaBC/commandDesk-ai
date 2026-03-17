@@ -273,7 +273,7 @@ Yes! Upgrade or downgrade anytime. Changes take effect immediately.
 
 **Email Support**
 - Free: Community forum only
-- Starter: support@nofabusinessconsulting.com (48-hour response)
+- Starter: supportdesk@nofabusinessconsulting.com (48-hour response)
 - Professional: Priority support (24-hour response)
 - Enterprise: Dedicated account manager + phone support
 
