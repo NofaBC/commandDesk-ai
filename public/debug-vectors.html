@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Management - CommandDesk AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Vector Management</h1>
+
+        <!-- Product Selector -->
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <label class="block text-sm font-medium mb-2">Product Namespace</label>
+            <input type="text" id="product" value="careerpilot-ai" 
+                class="w-full px-4 py-2 border rounded-lg" placeholder="careerpilot-ai">
+        </div>
+
+        <!-- List Vectors -->
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">List All Vectors</h2>
+            <button onclick="listVectors()" 
+                class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                List Vectors
+            </button>
+            <div id="listResults" class="mt-6"></div>
+        </div>
+
+        <!-- Cleanup Vectors -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Delete Vectors by Filename</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Filename Pattern</label>
+                <input type="text" id="cleanupPattern" 
+                    class="w-full px-4 py-2 border rounded-lg" 
+                    placeholder="e.g., 02-pricing-plans.md">
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="cleanup(true)" 
+                    class="px-6 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700">
+                    Dry Run (Preview)
+                </button>
+                <button onclick="cleanup(false)" 
+                    class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                    Delete (Permanent)
+                </button>
+            </div>
+
+            <div id="cleanupResults" class="mt-6"></div>
+        </div>
+    </div>
+
+    <script>
+        async function listVectors() {
+            const product = document.getElementById('product').value;
+            const resultsDiv = document.getElementById('listResults');
+            resultsDiv.innerHTML = '<p class="text-gray-600">Loading...</p>';
+
+            try {
+                const response = await fetch(`/api/debug/list-vectors?product=${product}`);
+                const data = await response.json();
+
+                let html = `<div class="mb-4"><p class="text-lg font-medium">Total Vectors: ${data.totalVectors}</p></div>`;
+                html += '<div class="space-y-4">';
+
+                for (const [filename, info] of Object.entries(data.files)) {
+                    html += `
+                        <div class="border rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-mono text-sm font-semibold">${filename}</h3>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                                    ${info.count} chunks
+                                </span>
+                            </div>
+                            <p class="text-xs text-gray-600 font-mono">${info.sampleText}...</p>
+                            <button onclick="document.getElementById('cleanupPattern').value='${filename}'" 
+                                class="mt-2 text-sm text-blue-600 hover:text-blue-800">
+                                → Use this filename
+                            </button>
+                        </div>
+                    `;
+                }
+
+                html += '</div>';
+                resultsDiv.innerHTML = html;
+            } catch (error) {
+                resultsDiv.innerHTML = `<p class="text-red-600">Error: ${error.message}</p>`;
+            }
+        }
+
+        async function cleanup(dryRun) {
+            const product = document.getElementById('product').value;
+            const pattern = document.getElementById('cleanupPattern').value;
+            const resultsDiv = document.getElementById('cleanupResults');
+
+            if (!pattern) {
+                alert('Please enter a filename pattern');
+                return;
+            }
+
+            resultsDiv.innerHTML = '<p class="text-gray-600">Processing...</p>';
+
+            try {
+                const response = await fetch('/api/debug/cleanup-vectors', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ product, filenamePattern: pattern, dryRun }),
+                });
+                const data = await response.json();
+
+                const bgColor = dryRun ? 'bg-yellow-50' : 'bg-red-50';
+                const html = `
+                    <div class="p-4 ${bgColor} rounded-lg">
+                        <p class="font-medium mb-2">${data.message}</p>
+                        <div class="text-sm space-y-1">
+                            <p>Pattern: <code class="bg-white px-2 py-1 rounded">${data.filenamePattern}</code></p>
+                            <p>Matching vectors: <strong>${data.matchingVectors}</strong></p>
+                            <p>Mode: <strong>${data.dryRun ? 'DRY RUN' : 'DELETED'}</strong></p>
+                        </div>
+                    </div>
+                `;
+                resultsDiv.innerHTML = html;
+
+                if (!dryRun && data.matchingVectors > 0) {
+                    // Refresh list
+                    setTimeout(() => listVectors(), 1000);
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = `<p class="text-red-600">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
