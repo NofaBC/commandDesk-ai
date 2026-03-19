@@ -1,72 +1,121 @@
-# CareerPilot AI - Product Overview
+CareerPilot AI - Product Overview
+What is CareerPilot AI?
 
-## What is CareerPilot AI?
+CareerPilot AI is an AI-powered job search command center designed to help users run a more focused and organized job search campaign.
 
-CareerPilot AI is an intelligent career development platform that combines artificial intelligence with Pro coaching expertise to help Pros at every stage of their career journey. Whether you're exploring new career paths, preparing for interviews, or optimizing your job search, CareerPilot AI provides personalized guidance and actionable insights.
+It combines profile-building, job matching, AI-assisted applications, resume generation, interview practice, and application tracking in one platform.
 
-## Core Capabilities
+CareerPilot AI is built for users who want more than a job board. It is designed to help them move through the full job search process with better structure and better AI support.
 
-### AI-Powered Career Assessment
-- Comprehensive skills and interests analysis
-- Personality-based career matching
-- Industry trend alignment
-- Growth opportunity identification
+Core Capabilities
+Profile Builder
 
-### Resume & Application Tools
-- AI resume builder with industry-specific templates
-- ATS (Applicant Tracking System) optimization
-- Cover letter generation
-- LinkedIn profile optimization
-- Real-time content suggestions
+Users create a profile with their:
 
-### Interview Preparation
-- AI-powered interview simulator
-- Industry-specific question banks
-- Video practice with feedback
-- Behavioral interview coaching
-- Technical interview prep (for tech roles)
+target role
 
-### Job Search Intelligence
-- Smart job matching based on your profile
-- Application tracking dashboard
-- Company research insights
-- Salary negotiation data
-- Market trend analysis
+location
 
-### AI Career Coaching
-- Personalized career roadmap
-- Skill gap analysis
-- Learning resource recommendations
-- Career pivot guidance
-- Pro development planning
+experience level
 
-## Who Is It For?
+skills
 
-### Early Career Pros
-Recent graduates and entry-level Pros looking to launch their careers with confidence.
+career background
 
-### Mid-Career Changers
-Pros exploring new industries or roles, seeking strategic guidance for successful transitions.
+This profile powers job matching, fit scores, cover letter generation, and interview coaching.
 
-### Job Seekers
-Active job hunters who need tools to optimize applications, prepare for interviews, and track opportunities.
+AI Job Matching
 
-### Career Advancers
-Experienced Pros looking to level up, negotiate better positions, or plan long-term career growth.
+CareerPilot AI searches for jobs and returns:
 
-## Key Differentiators
+relevant job listings
 
-1. **AI-First Approach**: Every feature is powered by advanced AI, not just templates
-2. **Personalization**: Tailored advice based on your unique background and goals
-3. **Comprehensive Platform**: All career tools in one place, no need for multiple services
-4. **Always Available**: 24/7 AI coaching support, no scheduling required
-5. **Affordable**: Pro-grade career services at a fraction of traditional coaching costs
+AI-generated fit scores
 
-## Getting Started
+matched skills
 
-1. Sign up for a free account (no credit card required)
-2. Complete your career profile and assessment
-3. Explore features with your 14-day free trial
-4. Choose a plan that fits your needs
+job details such as title, company, and location
 
-Start your career journey today at: https://nofabusinessconsulting.com/careerpilot-ai
+Smart Apply
+
+Users can generate an AI-tailored cover letter for a selected job, review it, copy it, and then track the application.
+
+Resume Builder
+
+CareerPilot AI includes a resume builder with PDF export. The resume builder is always free to use.
+
+Interview Coach
+
+Users can practice with the AI Interview Coach in:
+
+General mode
+
+Behavioral mode
+
+Technical mode
+
+The Interview Coach uses the user’s target role and profile context to generate better questions and follow-up responses.
+
+Application Tracking
+
+Users can track the jobs they apply to and view their application activity from the dashboard.
+
+Who Is It For?
+
+CareerPilot AI is designed for:
+
+active job seekers
+
+career changers
+
+mid-career professionals
+
+users running a 60–90 day job search campaign
+
+users who want AI help with job search execution, not just general advice
+
+What Makes It Different?
+
+All-in-one workflow
+Profile, job search, cover letters, resume, interview prep, and tracking are all in one place.
+
+AI-powered execution
+CareerPilot AI helps users do real job-search work, not just read suggestions.
+
+Fit-scored job search
+Jobs are ranked using profile-based fit scoring instead of simple keyword search alone.
+
+Structured campaign approach
+CareerPilot AI is built to support a focused job search over time, not random one-off applications.
+
+Supported Markets
+
+CareerPilot AI currently supports English-language markets for launch, including:
+
+United States
+
+Canada
+
+United Kingdom
+
+Australia
+
+other supported English-language markets as available
+
+Additional markets and country-specific resume/CV formats may be added in future updates.
+
+Trial and Access
+
+New users can begin with a 7-day free trial
+
+A Free plan is also available
+
+Paid plans use a credit-based system
+
+Resume Builder remains free to use
+
+Support
+
+Support questions can be sent to:
+
+supportdesk@nofabusinessconsulting.com
