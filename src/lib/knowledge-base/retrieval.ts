@@ -32,8 +32,9 @@ export async function queryKnowledgeBase(
       });
 
       if (results.matches && results.matches.length > 0) {
+        console.log('Pinecone matches:', results.matches.map(m => ({ score: m.score, filename: m.metadata?.filename })));
         return results.matches
-          .filter((m) => m.score && m.score > 0.7) // Only high-confidence matches
+          .filter((m) => m.score && m.score > 0.5) // Lowered for debugging
           .map((match) => ({
             text: (match.metadata?.text as string) || '',
             score: match.score || 0,
@@ -51,8 +52,9 @@ export async function queryKnowledgeBase(
     });
 
     if (generalResults.matches && generalResults.matches.length > 0) {
+      console.log('General namespace matches:', generalResults.matches.map(m => ({ score: m.score, filename: m.metadata?.filename })));
       return generalResults.matches
-        .filter((m) => m.score && m.score > 0.7)
+        .filter((m) => m.score && m.score > 0.5)
         .map((match) => ({
           text: (match.metadata?.text as string) || '',
           score: match.score || 0,
