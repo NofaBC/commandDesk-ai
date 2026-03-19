@@ -1,341 +1,108 @@
-# CareerPilot AI - Getting Started Guide
-
-## Quick Start (5 Minutes)
-
-### Step 1: Create Your Account
-1. Go to https://nofabusinessconsulting.com/careerpilot-ai
-2. Click "Start Free Trial" or "Sign Up"
-3. Enter your email address and create a password
-4. Verify your email (check spam folder if needed)
-5. Your 7-day free trial with Pro features starts immediately!
-
-**No credit card required for the trial.**
-
----
-
-## Step 2: Complete Your Profile (10 Minutes)
-
-### Basic Information
-- Full name and contact information
-- Current job title and company
-- Years of experience
-- Education background
-- Location and willingness to relocate
+CareerPilot AI - Getting Started Guide
+Quick Start
 
-### Career Goals
-- Target job titles or roles
-- Preferred industries
-- Desired salary range
-- Timeline for job search or career change
-- Work arrangement preferences (remote, hybrid, on-site)
+CareerPilot AI is designed to help users move through the main job-search workflow quickly.
 
-### Skills & Expertise
-- Technical skills
-- Soft skills
-- Languages
-- Certifications
-- Tools and platforms
-
-**Tip**: The more complete your profile, the better AI recommendations you'll receive!
-
----
-
-## Step 3: Take the Career Assessment (15 Minutes)
-
-### What to Expect
-- 30-40 questions about your interests, values, and preferences
-- No wrong answers - be honest!
-- Takes about 15 minutes to complete
-- Can pause and resume anytime
+Step 1: Create Your Account
 
-### Assessment Sections
-1. **Work Style Preferences**: How you like to work
-2. **Values & Motivators**: What drives you
-3. **Interests**: What you enjoy doing
-4. **Skills Confidence**: Your self-assessed strengths
-5. **Career Goals**: Where you want to go
+Go to the CareerPilot AI sign-up page
 
-### Results
-After completion, you'll receive:
-- Career path recommendations
-- Role matches with confidence scores
-- Skills development priorities
-- Personalized action plan
+Create an account using your email and password
 
----
-
-## Step 4: Build Your First Resume (15-30 Minutes)
+Log in and enter the platform
 
-### Starting Your Resume
-
-1. **Navigate to Resume Builder**
-   - Click "Resume Builder" in the main navigation
-   - Click "Create New Resume"
-
-2. **Choose a Template**
-   - Browse 50+ Pro templates
-   - Filter by industry or style
-   - Preview before selecting
+Begin your 7-day free trial or continue on the Free plan, depending on account status
 
-3. **Import Existing Resume (Optional)**
-   - Upload your current resume (PDF or DOCX)
-   - AI will extract and organize content
-   - Edit and enhance from there
+Step 2: Build Your Profile
 
-### Building From Scratch
+Complete the profile with:
 
-**Work Experience**
-- Add each position chronologically
-- AI suggests impactful bullet points
-- Use quantifiable achievements when possible
-- Follow the STAR method (Situation, Task, Action, Result)
+target role
 
-**Skills Section**
-- AI recommends relevant skills based on your experience
-- Prioritize skills from target job descriptions
-- Include both technical and soft skills
+location
 
-**Education & Certifications**
-- List degrees with institutions and dates
-- Include relevant coursework or honors
-- Add certifications and licenses
+country
 
-**AI Features to Use**
-- **Smart Suggestions**: Click lightbulb icon for AI recommendations
-- **Impact Analyzer**: See how strong your bullet points are
-- **ATS Checker**: Ensure compatibility with applicant tracking systems
-- **Job Match**: Upload a job description to tailor your resume
+years of experience
 
-### Finalizing Your Resume
-
-1. **Review & Edit**: Read through carefully
-2. **ATS Score**: Check your optimization score (aim for 80+)
-3. **Preview**: See how it looks in different formats
-4. **Export**: Download as PDF (recommended for applications)
+skills
 
-**Resume Limits**: Remember your plan's resume limit (Free: 1, Starter: 3, Pro+: Unlimited)
+career background
 
----
+Important: A complete profile improves job matching, fit scores, Smart Apply, and Interview Coach results.
 
-## Step 5: Set Up Job Tracking (5 Minutes)
+Step 3: Search for Jobs
 
-### Create Your Job Search Dashboard
+After your profile is completed:
 
-1. **Navigate to Job Tracker**
-   - Click "Job Search" in main menu
-   - Click "Add Application"
+Open the Job Search / Dashboard area
 
-2. **Add Your First Application**
-   - Job title and company name
-   - Job description or URL (AI auto-fills details)
-   - Application status (Applied, Interview, Offer, etc.)
-   - Important dates (application, interview, follow-up)
-   - Contact information
-   - Notes and documents
+Run a job search
 
-3. **Set Up Reminders**
-   - Enable email reminders for follow-ups
-   - Set interview notifications
-   - Track response deadlines
+Review returned jobs and fit scores
 
-4. **Integrate Your Calendar**
-   - Connect Google Calendar or Outlook
-   - Interview invites sync automatically
-   - Prep reminders 24 hours before
+Check matched skills and job relevance
 
----
+Step 4: Use Smart Apply
 
-## Step 6: Explore AI Career Coaching (5 Minutes)
+When you find a relevant job:
 
-### Have Your First Coaching Session
+Start Smart Apply
 
-1. **Open AI Coach**
-   - Click "AI Coach" in navigation
-   - Or use the chat widget (bottom right)
+Generate an AI cover letter
 
-2. **Ask a Question**
-   Example questions to start:
-   - "How should I prepare for a career change into tech?"
-   - "What skills should I develop for product management?"
-   - "How do I negotiate a higher salary offer?"
-   - "Should I include this experience on my resume?"
+Review and copy the cover letter
 
-3. **Get Personalized Advice**
-   - AI provides context-aware recommendations
-   - Asks follow-up questions to understand your situation
-   - Creates action plans based on your goals
+Confirm the application step
 
-4. **Save Important Insights**
-   - Bookmark helpful responses
-   - Export coaching summaries
-   - Set reminders for action items
+Track the application in your dashboard
 
-**Coaching Session Limits**: Free plan users get 3 sessions/month. Paid plans have unlimited access.
+Step 5: Build or Update Your Resume
 
----
+Use the Resume Builder to:
 
-## Step 7: Practice Interviewing (Starter+ Plans)
+create or edit your resume
 
-### Use the Interview Simulator
+review content
 
-1. **Select Interview Type**
-   - Behavioral (most common)
-   - Technical (industry-specific)
-   - Case study
-   - Executive/leadership
+export a PDF
 
-2. **Choose Your Industry**
-   - Questions tailored to your field
-   - Industry-specific scenarios
-   - Relevant examples
+Note: The Resume Builder uses a US / International English-style format for launch.
 
-3. **Start Practice Session**
-   - AI asks realistic interview questions
-   - Respond via text (or video in Pro+)
-   - Receive instant feedback on your answers
+Step 6: Practice with Interview Coach
 
-4. **Review Performance**
-   - See detailed feedback on each response
-   - Get improvement suggestions
-   - Track progress over time
+Open the Interview Coach and choose a mode:
 
-### Video Practice (Pro+ Plans)
-- Record yourself answering questions
-- AI analyzes verbal and non-verbal cues
-- Get feedback on:
-  - Eye contact and body language
-  - Pace and clarity
-  - Filler words usage
-  - Confidence level
-  - Content quality
+General
 
----
+Behavioral
 
-## Tips for Success
+Technical
 
-### Make the Most of Your Free Trial
+Then begin a practice session and respond to the AI-generated questions.
 
-**Week 1: Foundation**
-- Complete profile and assessment
-- Build 1-2 strong resumes
-- Start job tracking
-- Have 3-5 coaching sessions
+Step 7: Understand Credits
 
-**Week 2: Deep Dive**
-- Practice interviewing
-- Optimize LinkedIn (Pro+)
-- Research target companies
-- Generate customized cover letters
-- Review analytics
+CareerPilot AI uses a credit-based system for AI-powered actions.
 
-**By Day 14**: You'll have a clear sense of which features you use most and which plan fits your needs.
+Current credit costs:
 
----
+Job Search: 8 credits
 
-## Common First-Day Questions
+AI Cover Letter: 15 credits
 
-### "Where do I start?"
-Complete your profile first! Everything else builds on this foundation.
+Interview Practice: 25 credits
 
-### "How long does the assessment take?"
-About 15 minutes. You can pause and resume anytime.
+Resume Builder: free
 
-### "Can I upload my existing resume?"
-Yes! The resume builder can import and enhance existing resumes.
+Users can upgrade plans or purchase top-up credits if they need more usage.
 
-### "How do I cancel if I don't want to continue?"
-Go to Settings > Billing > Cancel Subscription. You can cancel anytime, even during the trial.
+Supported Markets
 
-### "What happens when my trial ends?"
-- If you've added payment info: You'll be charged for your chosen plan
-- If you haven't: You'll automatically move to the Free plan
+CareerPilot AI currently supports English-language markets for launch.
 
-### "Can I change plans during the trial?"
-Yes! Upgrade or downgrade anytime. Changes take effect immediately.
+Need Help?
 
----
+Contact:
 
-## Getting Help
-
-### Support Resources
-
-**Knowledge Base**
-- 100+ help articles
-- Video tutorials
-- Feature guides
-- Best practices
-
-**Community Forum**
-- Ask questions
-- Share experiences
-- Learn from others
-- Success stories
-
-**Email Support**
-- Free: Community forum only
-- Starter: supportdesk@nofabusinessconsulting.com (48-hour response)
-- Pro: Priority support (24-hour response)
-- Enterprise: Dedicated account manager + phone support
-
-**Live Chat**
-- Available Monday-Friday, 9 AM - 6 PM EST
-- All paid plans
-
----
-
-## Next Steps After Setup
-
-### For Active Job Seekers
-1. Add all current applications to job tracker
-2. Generate tailored resumes for target roles
-3. Practice interviewing for your industry
-4. Set up daily job alerts
-5. Schedule weekly AI coaching check-ins
-
-### For Career Explorers
-1. Review your assessment results thoroughly
-2. Research recommended career paths
-3. Identify skill gaps and learning priorities
-4. Create a 6-month development roadmap
-5. Update profile as you learn new skills
-
-### For Career Changers
-1. Complete skills gap analysis (Pro+)
-2. Build pivot-focused resume highlighting transferable skills
-3. Research target industry thoroughly
-4. Network strategy planning with AI coach
-5. Practice explaining your career change story
-
----
-
-## Keyboard Shortcuts
-
-Save time with these shortcuts:
-
-- `Ctrl + K` (or `Cmd + K`): Open AI Coach
-- `Ctrl + S` (or `Cmd + S`): Save current work
-- `Ctrl + N` (or `Cmd + N`): Create new (resume, application, etc.)
-- `Ctrl + F` (or `Cmd + F`): Search anywhere
-- `?`: Open keyboard shortcuts help
-
----
-
-## Mobile App
-
-### Download the App
-- **iOS**: Available on App Store
-- **Android**: Available on Google Play
-- **Web**: Works on any mobile browser
-
-### Mobile-Specific Features
-- Quick job status updates
-- Interview prep on commute
-- Push notifications for deadlines
-- Voice input for AI coach
-- Offline access to saved content
-
----
-
-**Ready to accelerate your career? Let's get started!**
-
-Questions? Contact supportdesk@nofabusinessconsulting.com
+supportdesk@nofabusinessconsulting.com
