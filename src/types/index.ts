@@ -123,6 +123,11 @@ export interface TechSupportCaseResponse {
   };
   createdAt: string;
   updatedAt: string;
+  // AI-generated response from L1 processing
+  aiResponse?: string;
+  shouldEscalate?: boolean;
+  escalationLevel?: 'L2' | 'L3';
+  escalationReason?: string;
 }
 
 export interface TechSupportWebhookPayload {

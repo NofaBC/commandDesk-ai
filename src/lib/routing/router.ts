@@ -264,18 +264,37 @@ async function handleTechnicalEscalation(
       status: 'escalated',
     } as Partial<Interaction>);
 
-    // Send acknowledgment to customer
-    await sendReplyEmail({
-      to: email.from,
-      subject: email.subject,
-      body: `Thank you for reaching out to NOFA AI Support.
+    // Build response email - use AI response if available
+    let responseBody: string;
+    if (caseResult.aiResponse) {
+      // Use the AI-generated response from TechSupport AI
+      responseBody = `Dear ${email.fromName || 'Customer'},
+
+Thank you for reaching out to NOFA AI Support. Here is our response to your inquiry:
+
+${caseResult.aiResponse}
+
+Your case reference number is ${caseResult.ticketNumber}. If you need further assistance or have follow-up questions, please reply to this email.
+
+Best regards,
+NOFA AI Support Team`;
+    } else {
+      // Fallback to acknowledgment if AI didn't generate a response
+      responseBody = `Thank you for reaching out to NOFA AI Support.
 
 We've received your technical inquiry and our specialized technical support team is now reviewing it. Your case reference number is ${caseResult.ticketNumber}.
 
 You can expect a detailed response shortly. If your issue is urgent, please reply to this email with additional details.
 
 Best regards,
-NOFA AI Support Team`,
+NOFA AI Support Team`;
+    }
+
+    // Send response to customer
+    await sendReplyEmail({
+      to: email.from,
+      subject: email.subject,
+      body: responseBody,
       replyToMessageId: email.id,
     });
 
