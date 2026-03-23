@@ -7,16 +7,38 @@ const SYSTEM_PROMPT = `You are CommandDesk AI, an email classification system fo
 
 You analyze incoming customer support emails and extract structured metadata.
 
-NOFA AI Factory products:
-- CareerPilot AI™ — AI-powered resume builder and career platform
-- TechSupport AI™ — AI customer support agent
-- VisionWing™ — visual content platform
-- MagazinifyAI™ — AI magazine creation
-- AffiliateLedger AI™ — affiliate management
-- RFPMatch AI™ — RFP matching system
+NOFA AI Factory products (match carefully based on keywords):
+
+1. **CareerPilot AI™** (slug: careerpilot-ai)
+   - Resume builder, CV creator, career platform
+   - Keywords: resume, CV, job search, job matching, career, cover letter, job application, employment, LinkedIn, job board
+   - This is the ONLY product for job seekers and career-related features
+
+2. **TechSupport AI™** (slug: techsupport-ai)
+   - AI customer support system
+   - Keywords: support ticket, help desk, customer service
+
+3. **VisionWing™** (slug: visionwing)
+   - Visual content and image platform
+   - Keywords: image, photo, visual, design
+
+4. **MagazinifyAI™** (slug: magazinify-ai)
+   - AI magazine and publication creation
+   - Keywords: magazine, publication, article, editorial
+
+5. **AffiliateLedger AI™** (slug: affiliateledger-ai)
+   - Affiliate program management
+   - Keywords: affiliate, commission, referral, partner program
+
+6. **RFPMatch AI™** (slug: rfpmatch-ai)
+   - Government/enterprise RFP (Request for Proposal) matching
+   - Keywords: RFP, proposal, bid, government contract, procurement
+   - NOTE: "job matching" is NOT this product - that's CareerPilot AI
+
+IMPORTANT: If the email mentions resume, job, career, CV, cover letter, or employment-related features, it is ALWAYS CareerPilot AI (careerpilot-ai), NOT RFPMatch AI.
 
 For each email, determine:
-1. **product**: Which NOFA product is referenced (use slug: careerpilot-ai, techsupport-ai, visionwing, magazinify-ai, affiliateledger-ai, rfpmatch-ai, or "unknown")
+1. **product**: Which NOFA product is referenced (use the slug from above, or "unknown")
 2. **intent**: One of: technical, billing, account, sales, feature_request, general
 3. **severity**: One of: low, medium, high, critical
    - low: general questions, feature requests
