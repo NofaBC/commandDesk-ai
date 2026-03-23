@@ -55,6 +55,13 @@ export function ActivityFeed({ interactions }: ActivityFeedProps) {
     );
   }
 
+  const getTechSupportUrl = (interaction: Interaction) => {
+    if (interaction.routingOutcome === 'escalated_techsupport' && interaction.techSupportCaseId) {
+      return `${process.env.NEXT_PUBLIC_TECHSUPPORT_URL || 'https://tech-support-ai-one.vercel.app'}/cases/${interaction.techSupportCaseId}`;
+    }
+    return null;
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -62,44 +69,76 @@ export function ActivityFeed({ interactions }: ActivityFeedProps) {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {interactions.map((interaction) => (
-            <div
-              key={interaction.id}
-              className="flex items-start justify-between border-b pb-4 last:border-0 last:pb-0"
-            >
-              <div className="space-y-1 flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-medium text-sm">
-                    {interaction.fromName || interaction.from}
-                  </span>
-                  {interaction.classification && (
-                    <>
-                      <Badge variant={severityVariant[interaction.classification.severity]}>
-                        {interaction.classification.severity.toUpperCase()}
-                      </Badge>
-                      <Badge variant="outline">
-                        {intentLabel[interaction.classification.intent]}
-                      </Badge>
-                    </>
+          {interactions.map((interaction) => {
+            const techSupportUrl = getTechSupportUrl(interaction);
+            const isClickable = techSupportUrl !== null;
+
+            return (
+              <div
+                key={interaction.id}
+                className={`flex items-start justify-between border-b pb-4 last:border-0 last:pb-0 ${
+                  isClickable ? 'hover:bg-accent/50 cursor-pointer transition-colors rounded-lg p-2 -m-2' : ''
+                }`}
+                onClick={() => {
+                  if (techSupportUrl) {
+                    window.open(techSupportUrl, '_blank');
+                  }
+                }}
+              >
+                <div className="space-y-1 flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-medium text-sm">
+                      {interaction.fromName || interaction.from}
+                    </span>
+                    {interaction.classification && (
+                      <>
+                        <Badge variant={severityVariant[interaction.classification.severity]}>
+                          {interaction.classification.severity.toUpperCase()}
+                        </Badge>
+                        <Badge variant="outline">
+                          {intentLabel[interaction.classification.intent]}
+                        </Badge>
+                      </>
+                    )}
+                  </div>
+                  <p className="text-sm font-medium">{interaction.subject}</p>
+                  {interaction.classification?.summary && (
+                    <p className="text-xs text-muted-foreground">
+                      {truncate(interaction.classification.summary, 120)}
+                    </p>
+                  )}
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span>{formatDate(interaction.receivedAt)}</span>
+                    {interaction.techSupportTicketNumber && (
+                      <span className="font-mono text-primary">
+                        {interaction.techSupportTicketNumber}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="ml-4 flex-shrink-0 flex items-center gap-2">
+                  <Badge variant={outcomeVariant[interaction.routingOutcome]}>
+                    {outcomeLabel[interaction.routingOutcome]}
+                  </Badge>
+                  {isClickable && (
+                    <svg
+                      className="w-4 h-4 text-muted-foreground"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
                   )}
                 </div>
-                <p className="text-sm font-medium">{interaction.subject}</p>
-                {interaction.classification?.summary && (
-                  <p className="text-xs text-muted-foreground">
-                    {truncate(interaction.classification.summary, 120)}
-                  </p>
-                )}
-                <p className="text-xs text-muted-foreground">
-                  {formatDate(interaction.receivedAt)}
-                </p>
               </div>
-              <div className="ml-4 flex-shrink-0">
-                <Badge variant={outcomeVariant[interaction.routingOutcome]}>
-                  {outcomeLabel[interaction.routingOutcome]}
-                </Badge>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </CardContent>
     </Card>
