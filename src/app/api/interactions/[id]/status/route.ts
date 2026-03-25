@@ -8,9 +8,10 @@ import type { InteractionStatus } from '@/types';
  */
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await props.params;
     const { id } = params;
     const body = await request.json();
     const { status } = body as { status: InteractionStatus };
