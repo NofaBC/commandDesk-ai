@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getFirestore } from '@/lib/firebase/admin';
+import { adminDb } from '@/lib/firebase/admin';
 import type { InteractionStatus } from '@/types';
 
 /**
@@ -42,7 +42,7 @@ export async function PATCH(
       );
     }
 
-    const db = getFirestore();
+    const db = adminDb();
     const interactionRef = db.collection('interactions').doc(id);
     const doc = await interactionRef.get();
 
