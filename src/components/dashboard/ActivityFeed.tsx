@@ -69,7 +69,8 @@ export function ActivityFeed({ interactions }: ActivityFeedProps) {
 
   const getTechSupportUrl = (interaction: Interaction) => {
     if (interaction.routingOutcome === 'escalated_techsupport' && interaction.techSupportCaseId) {
-      return `${process.env.NEXT_PUBLIC_TECHSUPPORT_URL || 'https://tech-support-ai-one.vercel.app'}/cases/${interaction.techSupportCaseId}`;
+      // TechSupport AI uses /en/ prefix for internationalization
+      return `${process.env.NEXT_PUBLIC_TECHSUPPORT_URL || 'https://tech-support-ai-one.vercel.app'}/en/dashboard/cases/${interaction.techSupportCaseId}`;
     }
     return null;
   };
