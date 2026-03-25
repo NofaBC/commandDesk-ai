@@ -2,6 +2,7 @@
 
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { StatusButton } from './StatusButton';
 import { formatDate, truncate } from '@/lib/utils';
 import type { Interaction, RoutingOutcome, Severity, IntentCategory } from '@/types';
 
@@ -37,6 +38,17 @@ const intentLabel: Record<IntentCategory, string> = {
   sales: 'Sales',
   feature_request: 'Feature Request',
   general: 'General',
+};
+
+const statusLabel: Record<string, string> = {
+  received: 'Received',
+  classifying: 'Classifying',
+  classified: 'Classified',
+  responding: 'Responding',
+  responded: 'Responded',
+  escalated: 'Escalated',
+  resolved: 'Resolved',
+  failed: 'Failed',
 };
 
 export function ActivityFeed({ interactions }: ActivityFeedProps) {
@@ -100,6 +112,12 @@ export function ActivityFeed({ interactions }: ActivityFeedProps) {
                         </Badge>
                       </>
                     )}
+                    <Badge 
+                      variant={interaction.status === 'resolved' ? 'success' : 'secondary'}
+                      className="text-xs"
+                    >
+                      {statusLabel[interaction.status] || interaction.status}
+                    </Badge>
                   </div>
                   <p className="text-sm font-medium">{interaction.subject}</p>
                   {interaction.classification?.summary && (
@@ -120,6 +138,11 @@ export function ActivityFeed({ interactions }: ActivityFeedProps) {
                   <Badge variant={outcomeVariant[interaction.routingOutcome]}>
                     {outcomeLabel[interaction.routingOutcome]}
                   </Badge>
+                  <StatusButton
+                    interactionId={interaction.id}
+                    currentStatus={interaction.status}
+                    routingOutcome={interaction.routingOutcome}
+                  />
                   {isClickable && (
                     <svg
                       className="w-4 h-4 text-muted-foreground"
