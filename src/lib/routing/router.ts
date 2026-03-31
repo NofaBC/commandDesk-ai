@@ -6,13 +6,15 @@ import type {
 import { classifyEmail } from '@/lib/ai/classifier';
 import { generateAutoReply } from '@/lib/ai/responder';
 import { sendReplyEmail } from '@/lib/email/sender';
-import { forwardToTechSupport } from '@/lib/routing/techsupport';
+import { forwardToTechSupport, addReplyToTechSupport } from '@/lib/routing/techsupport';
 import { sendSlackNotification } from '@/lib/notifications/slack';
 import {
   createInteraction,
   updateInteractionClassification,
   updateInteractionRouting,
   updateInteractionStatus,
+  extractCaseReference,
+  findInteractionByCaseReference,
 } from '@/lib/firebase/interactions';
 import { verifySubscriber } from '@/lib/auth/subscriber';
 import { getNonSubscriberResponse, getExpiredSubscriberResponse } from '@/lib/email/templates';
@@ -42,7 +44,14 @@ export async function processEmail(email: ParsedEmail): Promise<ProcessResult> {
   let interactionId = '';
 
   try {
-    // Step 0: Verify subscriber status (AUTHORIZATION GATE)
+    // Step 0a: Check if this is a reply to an existing case
+    const caseReference = extractCaseReference(email.subject, email.body);
+    if (caseReference) {
+      console.log(`Detected reply to existing case: ${caseReference}`);
+      return await handleCaseReply(email, caseReference);
+    }
+
+    // Step 0b: Verify subscriber status (AUTHORIZATION GATE)
     const subscriberResult = await verifySubscriber(email.from);
     
     if (!subscriberResult.isSubscriber) {
@@ -368,4 +377,140 @@ async function handleAutoReply(
     console.error('Auto-reply error:', error);
     return false;
   }
+}
+
+/**
+ * Handle a customer reply to an existing TechSupport case.
+ * Instead of creating a new case, add the reply to the existing conversation.
+ */
+async function handleCaseReply(
+  email: ParsedEmail,
+  caseReference: string
+): Promise<ProcessResult> {
+  try {
+    // Find the original interaction
+    const originalInteraction = await findInteractionByCaseReference(caseReference);
+    
+    if (!originalInteraction || !originalInteraction.techSupportCaseId) {
+      console.log(`No interaction found for case ${caseReference}, processing as new email`);
+      // Fall through to normal processing would require refactoring,
+      // so we return an error that will be logged
+      throw new Error(`Original case not found: ${caseReference}`);
+    }
+    
+    // Extract the customer's message (strip quoted text from previous replies)
+    const customerMessage = extractCustomerMessage(email.body);
+    
+    // Forward reply to TechSupport AI
+    const replyResult = await addReplyToTechSupport(
+      originalInteraction.techSupportCaseId,
+      customerMessage,
+      email.from,
+      email.fromName
+    );
+    
+    // Build response email with AI response
+    let responseBody: string;
+    if (replyResult.aiResponse) {
+      responseBody = `Dear ${email.fromName || 'Customer'},
+
+Thank you for your follow-up. Here is our response:
+
+${replyResult.aiResponse}
+
+Your case reference number is ${caseReference}. If you need further assistance, please reply to this email.
+
+Best regards,
+NOFA AI Support Team`;
+    } else {
+      responseBody = `Dear ${email.fromName || 'Customer'},
+
+Thank you for your follow-up regarding case ${caseReference}.
+
+Our team is reviewing your response and will get back to you shortly.
+
+Best regards,
+NOFA AI Support Team`;
+    }
+    
+    // Send response to customer
+    await sendReplyEmail({
+      to: email.from,
+      subject: email.subject,
+      body: responseBody,
+      replyToMessageId: email.id,
+    });
+    
+    // Send Slack notification for follow-up
+    try {
+      await sendSlackNotification({
+        interactionId: originalInteraction.id,
+        from: email.from,
+        subject: `Follow-up: ${email.subject}`,
+        product: originalInteraction.classification?.product || 'unknown',
+        intent: 'technical',
+        severity: originalInteraction.classification?.severity || 'medium',
+        summary: `Customer replied to case ${caseReference}: ${customerMessage.substring(0, 100)}...`,
+        routingOutcome: 'escalated_techsupport',
+        responseSent: true,
+        needsHumanAttention: replyResult.shouldEscalate || false,
+      });
+    } catch (slackError) {
+      console.error('Slack notification failed for reply:', slackError);
+    }
+    
+    return {
+      interactionId: originalInteraction.id,
+      classification: originalInteraction.classification || {
+        product: 'unknown',
+        intent: 'technical',
+        severity: 'medium',
+        summary: 'Follow-up to existing case',
+        confidence: 1,
+        language: 'en',
+        issueCategory: 'other',
+      },
+      routingOutcome: 'escalated_techsupport',
+      responseSent: true,
+      techSupportCaseId: originalInteraction.techSupportCaseId,
+      subscriberStatus: 'active',
+    };
+  } catch (error) {
+    console.error('Error handling case reply:', error);
+    throw error;
+  }
+}
+
+/**
+ * Extract the customer's new message from a reply email,
+ * stripping out quoted previous messages.
+ */
+function extractCustomerMessage(body: string): string {
+  // Common reply indicators
+  const replyIndicators = [
+    /^On .+ wrote:$/m,                    // Gmail: "On Mon, Jan 1, 2026 at 10:00 AM X wrote:"
+    /^-{3,}\s*Original Message\s*-{3,}/mi, // Outlook: "--- Original Message ---"
+    /^From:.+$/m,                          // "From: someone@example.com"
+    /^>+/m,                                // Quoted text starting with >
+    /^Sent from my/m,                      // Mobile signatures
+    /This is an automated response/i,      // Bot signatures
+  ];
+  
+  let message = body;
+  
+  // Find the earliest reply indicator and cut there
+  let earliestIndex = message.length;
+  for (const pattern of replyIndicators) {
+    const match = message.match(pattern);
+    if (match && match.index !== undefined && match.index < earliestIndex) {
+      earliestIndex = match.index;
+    }
+  }
+  
+  if (earliestIndex < message.length) {
+    message = message.substring(0, earliestIndex);
+  }
+  
+  // Clean up
+  return message.trim();
 }

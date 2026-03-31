@@ -151,3 +151,49 @@ function calculateAvgResponseTime(
 
   return Math.round(totalMs / responded.length);
 }
+
+/**
+ * Extract case reference number from email subject or body.
+ * Pattern: TS-YYYYMMDD-XXXX (e.g., TS-20260331-ODOG)
+ */
+export function extractCaseReference(subject: string, body: string): string | null {
+  const pattern = /TS-\d{8}-[A-Z0-9]{4}/i;
+  
+  // Check subject first
+  const subjectMatch = subject.match(pattern);
+  if (subjectMatch) return subjectMatch[0].toUpperCase();
+  
+  // Then check body
+  const bodyMatch = body.match(pattern);
+  if (bodyMatch) return bodyMatch[0].toUpperCase();
+  
+  return null;
+}
+
+/**
+ * Find an existing interaction by TechSupport case reference number.
+ */
+export async function findInteractionByCaseReference(
+  ticketNumber: string
+): Promise<Interaction | null> {
+  const db = adminDb();
+  const snapshot = await db
+    .collection(COLLECTION)
+    .where('techSupportTicketNumber', '==', ticketNumber)
+    .limit(1)
+    .get();
+
+  if (snapshot.empty) return null;
+
+  const doc = snapshot.docs[0];
+  const data = doc.data();
+  return {
+    id: doc.id,
+    ...data,
+    receivedAt: data.receivedAt?.toDate?.() || new Date(data.receivedAt),
+    classifiedAt: data.classifiedAt?.toDate?.() || data.classifiedAt,
+    respondedAt: data.respondedAt?.toDate?.() || data.respondedAt,
+    createdAt: data.createdAt?.toDate?.() || new Date(data.createdAt),
+    updatedAt: data.updatedAt?.toDate?.() || new Date(data.updatedAt),
+  } as Interaction;
+}

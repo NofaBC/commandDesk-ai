@@ -60,6 +60,64 @@ export async function forwardToTechSupport(
   return result;
 }
 
+export interface TechSupportReplyResponse {
+  success: boolean;
+  aiResponse?: string;
+  shouldEscalate?: boolean;
+  escalationLevel?: string;
+  error?: string;
+}
+
+/**
+ * Forward a customer reply to an existing TechSupport-AI case.
+ */
+export async function addReplyToTechSupport(
+  caseId: string,
+  message: string,
+  customerEmail: string,
+  customerName?: string
+): Promise<TechSupportReplyResponse> {
+  const baseUrl = process.env.TECHSUPPORT_API_URL;
+  const tenantId = process.env.TECHSUPPORT_TENANT_ID;
+  const apiKey = process.env.TECHSUPPORT_API_KEY;
+
+  if (!baseUrl || !tenantId) {
+    throw new Error(
+      'TechSupport-AI not configured: missing TECHSUPPORT_API_URL or TECHSUPPORT_TENANT_ID'
+    );
+  }
+
+  const url = `${baseUrl}/api/cases/${caseId}/reply`;
+
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    'x-tenant-id': tenantId,
+  };
+
+  if (apiKey) {
+    headers['Authorization'] = `Bearer ${apiKey}`;
+  }
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      message,
+      customerEmail,
+      customerName,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(
+      `TechSupport-AI API error (${response.status}): ${errorText}`
+    );
+  }
+
+  return await response.json();
+}
+
 /**
  * Check the status of a case in TechSupport-AI.
  */
