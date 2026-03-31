@@ -8,10 +8,12 @@ import {
   Settings,
   Mail,
   BookOpen,
+  FolderOpen,
 } from 'lucide-react';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard/issues', label: 'Issues by Category', icon: FolderOpen },
   { href: '/dashboard/knowledge', label: 'Knowledge Base', icon: BookOpen },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];

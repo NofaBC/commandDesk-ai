@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import type { EmailClassification, IntentCategory, Severity } from '@/types';
+import type { EmailClassification, IntentCategory, Severity, IssueCategory } from '@/types';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -48,6 +48,11 @@ For each email, determine:
 4. **summary**: A 1-2 sentence summary of the issue
 5. **confidence**: 0.0-1.0 how confident you are
 6. **language**: ISO 639-1 code (e.g., "en", "fr", "de")
+7. **issueCategory**: Specific issue type for organizing tickets. Choose ONE:
+   - Technical: login_issues, performance_slow, feature_not_working, data_sync_error, integration_problem, mobile_app_issue, browser_compatibility
+   - Billing: payment_failed, subscription_cancel, refund_request, pricing_question, invoice_request
+   - Account: password_reset, account_locked, profile_update, data_export, account_deletion
+   - Other: how_to_question, feature_request, feedback, other
 
 Respond ONLY with valid JSON matching this schema:
 {
@@ -56,7 +61,8 @@ Respond ONLY with valid JSON matching this schema:
   "severity": string,
   "summary": string,
   "confidence": number,
-  "language": string
+  "language": string,
+  "issueCategory": string
 }`;
 
 export async function classifyEmail(
@@ -94,6 +100,7 @@ export async function classifyEmail(
       summary: parsed.summary || 'No summary available',
       confidence: Math.min(1, Math.max(0, parsed.confidence || 0.5)),
       language: parsed.language || 'en',
+      issueCategory: validateIssueCategory(parsed.issueCategory, parsed.intent),
     };
   } catch (error) {
     console.error('Classification error:', error);
@@ -106,6 +113,7 @@ export async function classifyEmail(
       summary: `Email from ${from}: ${subject}`,
       confidence: 0,
       language: 'en',
+      issueCategory: 'other',
     };
   }
 }
@@ -129,4 +137,30 @@ function validateSeverity(severity: string): Severity {
   return valid.includes(severity as Severity)
     ? (severity as Severity)
     : 'medium';
+}
+
+function validateIssueCategory(category: string, intent: string): IssueCategory {
+  const valid: IssueCategory[] = [
+    'login_issues', 'performance_slow', 'feature_not_working', 'data_sync_error',
+    'integration_problem', 'mobile_app_issue', 'browser_compatibility',
+    'payment_failed', 'subscription_cancel', 'refund_request', 'pricing_question', 'invoice_request',
+    'password_reset', 'account_locked', 'profile_update', 'data_export', 'account_deletion',
+    'how_to_question', 'feature_request', 'feedback', 'other'
+  ];
+  
+  if (valid.includes(category as IssueCategory)) {
+    return category as IssueCategory;
+  }
+  
+  // Fallback based on intent
+  const intentDefaults: Record<string, IssueCategory> = {
+    technical: 'feature_not_working',
+    billing: 'pricing_question',
+    account: 'profile_update',
+    feature_request: 'feature_request',
+    general: 'how_to_question',
+    sales: 'pricing_question',
+  };
+  
+  return intentDefaults[intent] || 'other';
 }

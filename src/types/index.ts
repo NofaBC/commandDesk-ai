@@ -32,6 +32,34 @@ export type InteractionStatus =
 // Email Classification
 // ============================================
 
+// Issue categories for organizing support tickets
+export type IssueCategory =
+  // Technical issues
+  | 'login_issues'
+  | 'performance_slow'
+  | 'feature_not_working'
+  | 'data_sync_error'
+  | 'integration_problem'
+  | 'mobile_app_issue'
+  | 'browser_compatibility'
+  // Billing issues
+  | 'payment_failed'
+  | 'subscription_cancel'
+  | 'refund_request'
+  | 'pricing_question'
+  | 'invoice_request'
+  // Account issues  
+  | 'password_reset'
+  | 'account_locked'
+  | 'profile_update'
+  | 'data_export'
+  | 'account_deletion'
+  // Other
+  | 'how_to_question'
+  | 'feature_request'
+  | 'feedback'
+  | 'other';
+
 export interface EmailClassification {
   product: string;
   intent: IntentCategory;
@@ -39,6 +67,7 @@ export interface EmailClassification {
   summary: string;
   confidence: number;
   language: string;
+  issueCategory: IssueCategory; // For folder/grouping
 }
 
 // ============================================
