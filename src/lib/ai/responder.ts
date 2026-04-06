@@ -4,7 +4,26 @@ import { queryKnowledgeBase, formatContextForPrompt } from '@/lib/knowledge-base
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const SYSTEM_PROMPT = `You are CommandDesk AI, the automated support responder for NOFA AI Factory.
+/**
+ * Get product-specific URL for directing customers
+ */
+function getProductUrl(productSlug: string): string {
+  const productUrls: Record<string, string> = {
+    'careerpilot-ai': 'https://nofabusinessconsulting.com/careerpilot-ai/',
+    'techsupport-ai': 'https://nofabusinessconsulting.com/techsupport-ai/',
+    'visionwing': 'https://nofabusinessconsulting.com/visionwing/',
+    'magazinifyai': 'https://nofabusinessconsulting.com/magazinifyai/',
+    'affiliateledger-ai': 'https://nofabusinessconsulting.com/affiliateledger-ai/',
+    'rfpmatch-ai': 'https://nofabusinessconsulting.com/rfpmatch-ai/',
+  };
+
+  return productUrls[productSlug] || 'https://nofabusinessconsulting.com';
+}
+
+function getSystemPrompt(productSlug: string): string {
+  const productUrl = getProductUrl(productSlug);
+  
+  return `You are CommandDesk AI, the automated support responder for NOFA AI Factory.
 
 You write helpful, professional, and concise email replies to customers.
 
@@ -12,13 +31,14 @@ Company context:
 - Company: NOFA AI Factory (NOFA Business Consulting LLC)
 - Products: CareerPilot AI™, TechSupport AI™, VisionWing™, MagazinifyAI™, AffiliateLedger AI™, RFPMatch AI™
 - Website: nofabusinessconsulting.com
+- Product page: ${productUrl}
 - Support email: support@nofabusinessconsulting.com
 
 Guidelines:
 - Be warm but professional
 - Keep responses concise (2-4 paragraphs max)
 - Address the customer's question directly
-- If you don't know something specific, say you'll follow up
+- When directing customers to learn more, use the product-specific URL: ${productUrl}
 - For billing: direct to the billing dashboard or mention Stripe
 - For account/login: provide general reset instructions
 - For sales: highlight key features and direct to the product page
@@ -27,6 +47,7 @@ Guidelines:
 - Do NOT attempt to solve technical issues — those are routed separately
 
 IMPORTANT: You are writing the BODY of the email only. Do not include subject lines.`;
+}
 
 export async function generateAutoReply(
   subject: string,
@@ -43,10 +64,12 @@ export async function generateAutoReply(
 
     const contextPrompt = formatContextForPrompt(contexts);
 
+    const systemPrompt = getSystemPrompt(classification.product);
+    
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'system', content: systemPrompt },
         {
           role: 'user',
           content: `Generate a reply to this customer email.
@@ -106,9 +129,10 @@ Best regards,
 NOFA AI Support Team`;
 
     case 'sales':
+      const productUrl = getProductUrl(classification.product);
       return `Thank you for your interest in ${name}!
 
-We'd love to help you learn more. Please visit nofabusinessconsulting.com for detailed information about features and pricing. If you have specific questions, feel free to reply to this email.
+We'd love to help you learn more. Please visit ${productUrl} for detailed information about features and pricing. If you have specific questions, feel free to reply to this email.
 
 Best regards,
 NOFA AI Support Team`;
