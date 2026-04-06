@@ -33,6 +33,7 @@ export async function getInteraction(id: string): Promise<Interaction | null> {
     receivedAt: data.receivedAt?.toDate?.() || new Date(data.receivedAt),
     classifiedAt: data.classifiedAt?.toDate?.() || data.classifiedAt,
     respondedAt: data.respondedAt?.toDate?.() || data.respondedAt,
+    ratedAt: data.ratedAt?.toDate?.() || data.ratedAt,
     createdAt: data.createdAt?.toDate?.() || new Date(data.createdAt),
     updatedAt: data.updatedAt?.toDate?.() || new Date(data.updatedAt),
   } as Interaction;
@@ -101,6 +102,7 @@ export async function getRecentInteractions(
       receivedAt: data.receivedAt?.toDate?.() || new Date(data.receivedAt),
       classifiedAt: data.classifiedAt?.toDate?.() || data.classifiedAt,
       respondedAt: data.respondedAt?.toDate?.() || data.respondedAt,
+      ratedAt: data.ratedAt?.toDate?.() || data.ratedAt,
       createdAt: data.createdAt?.toDate?.() || new Date(data.createdAt),
       updatedAt: data.updatedAt?.toDate?.() || new Date(data.updatedAt),
     } as Interaction;
@@ -193,6 +195,7 @@ export async function findInteractionByCaseReference(
     receivedAt: data.receivedAt?.toDate?.() || new Date(data.receivedAt),
     classifiedAt: data.classifiedAt?.toDate?.() || data.classifiedAt,
     respondedAt: data.respondedAt?.toDate?.() || data.respondedAt,
+    ratedAt: data.ratedAt?.toDate?.() || data.ratedAt,
     createdAt: data.createdAt?.toDate?.() || new Date(data.createdAt),
     updatedAt: data.updatedAt?.toDate?.() || new Date(data.updatedAt),
   } as Interaction;
