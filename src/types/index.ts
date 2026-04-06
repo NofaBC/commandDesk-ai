@@ -74,6 +74,16 @@ export interface EmailClassification {
 // Core Models
 // ============================================
 
+export type RatingValue = 'helpful' | 'not_helpful' | null;
+
+export type RatingReason =
+  | 'accurate'
+  | 'incomplete'
+  | 'wrong_topic'
+  | 'too_generic'
+  | 'didnt_understand'
+  | 'other';
+
 export interface Interaction {
   id: string;
   emailId: string;
@@ -91,6 +101,11 @@ export interface Interaction {
   techSupportTicketNumber?: string;
   slackNotified: boolean;
   errorMessage?: string;
+  // Rating fields
+  rating?: RatingValue;
+  ratingReason?: RatingReason;
+  ratedAt?: Date;
+  // Timestamps
   receivedAt: Date;
   classifiedAt?: Date;
   respondedAt?: Date;

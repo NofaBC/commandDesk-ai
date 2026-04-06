@@ -356,16 +356,20 @@ async function handleAutoReply(
       classification
     );
 
+    // Add rating footer to collect feedback
+    const { addRatingFooter } = await import('@/lib/email/rating-footer');
+    const bodyWithRating = addRatingFooter(replyBody, interactionId);
+
     const result = await sendReplyEmail({
       to: email.from,
       subject: email.subject,
-      body: replyBody,
+      body: bodyWithRating,
       replyToMessageId: email.id,
     });
 
     if (result.success) {
       await updateInteractionStatus(interactionId, 'responded', {
-        response: replyBody,
+        response: replyBody, // Store original body without footer
         respondedAt: new Date(),
       } as Partial<Interaction>);
       return true;
