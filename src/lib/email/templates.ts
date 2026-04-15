@@ -19,7 +19,7 @@ For general inquiries, please visit our website:
 https://nofabusinessconsulting.com
 
 Interested in our AI-powered products?
-• CareerPilot AI - AI Resume Builder
+• Dlyn-AI - AI Resume Builder
 • AffiliateLedger AI - Affiliate Management
 • And more...
 

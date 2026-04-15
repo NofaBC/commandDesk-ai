@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Upload, FileText } from 'lucide-react';
 
 const PRODUCTS = [
-  { value: 'careerpilot-ai', label: 'CareerPilot AI™' },
+  { value: 'dlyn-ai', label: 'Dlyn-AI™' },
   { value: 'magazinify-ai', label: 'MagazinifyAI™' },
   { value: 'rfpmatch-ai', label: 'RFPMatch AI™' },
   { value: 'techsupport-ai', label: 'TechSupport AI™' },

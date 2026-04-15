@@ -9,7 +9,8 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
  */
 function getProductUrl(productSlug: string): string {
   const productUrls: Record<string, string> = {
-    'careerpilot-ai': 'https://nofabusinessconsulting.com/careerpilot-ai/',
+    'dlyn-ai': 'https://nofabusinessconsulting.com/dlyn-ai/',
+    'careerpilot-ai': 'https://nofabusinessconsulting.com/dlyn-ai/',
     'techsupport-ai': 'https://nofabusinessconsulting.com/techsupport-ai/',
     'visionwing': 'https://nofabusinessconsulting.com/visionwing/',
     'magazinifyai': 'https://nofabusinessconsulting.com/magazinifyai/',
@@ -29,7 +30,7 @@ You write helpful, professional, and concise email replies to customers.
 
 Company context:
 - Company: NOFA AI Factory (NOFA Business Consulting LLC)
-- Products: CareerPilot AI™, TechSupport AI™, VisionWing™, MagazinifyAI™, AffiliateLedger AI™, RFPMatch AI™
+- Products: Dlyn-AI™ (formerly CareerPilot AI™), TechSupport AI™, VisionWing™, MagazinifyAI™, AffiliateLedger AI™, RFPMatch AI™
 - Website: nofabusinessconsulting.com
 - Product page: ${productUrl}
 - Support email: support@nofabusinessconsulting.com

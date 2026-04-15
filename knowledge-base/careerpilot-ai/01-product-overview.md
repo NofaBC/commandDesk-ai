@@ -40,6 +40,8 @@ Smart Apply
 
 Users can generate an AI-tailored cover letter for a selected job, review it, copy it, and then track the application.
 
+Note: Users will be directed to the employer's website to complete their application. CareerPilot AI helps users prepare their materials, but all applications must be submitted directly to the employer.
+
 Resume Builder
 
 CareerPilot AI includes a resume builder with PDF export. The resume builder is always free to use.

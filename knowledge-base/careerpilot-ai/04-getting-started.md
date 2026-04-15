@@ -57,6 +57,8 @@ Confirm the application step
 
 Track the application in your dashboard
 
+Note: You'll be directed to the employer's website to complete your application. CareerPilot AI helps you prepare your materials, but all applications must be submitted directly to the employer.
+
 Step 5: Build or Update Your Resume
 
 Use the Resume Builder to:

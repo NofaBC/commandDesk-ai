@@ -83,7 +83,7 @@ export default function SettingsPage() {
           <CardContent>
             <div className="space-y-2">
               {[
-                'CareerPilot AI™',
+                'Dlyn-AI™',
                 'TechSupport AI™',
                 'VisionWing™',
                 'MagazinifyAI™',
