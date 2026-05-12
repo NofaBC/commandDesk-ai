@@ -7,6 +7,7 @@ import { Upload, FileText } from 'lucide-react';
 
 const PRODUCTS = [
   { value: 'dlyn-ai', label: 'Dlyn-AI™' },
+  { value: 'intelliscan-ai', label: 'IntelliScan AI™' },
   { value: 'magazinify-ai', label: 'MagazinifyAI™' },
   { value: 'rfpmatch-ai', label: 'RFPMatch AI™' },
   { value: 'techsupport-ai', label: 'TechSupport AI™' },

@@ -19,19 +19,23 @@ NOFA AI Factory products (match carefully based on keywords):
    - AI customer support system
    - Keywords: support ticket, help desk, customer service
 
-3. **VisionWing™** (slug: visionwing)
+3. **IntelliScan AI™** (slug: intelliscan-ai)
+   - AI-powered vulnerability scanner for web applications
+   - Keywords: security, vulnerability, scanner, penetration testing, OWASP, security scan, web security, exploit, XSS, SQL injection, API security
+
+4. **VisionWing™** (slug: visionwing)
    - Visual content and image platform
    - Keywords: image, photo, visual, design
 
-4. **MagazinifyAI™** (slug: magazinify-ai)
+5. **MagazinifyAI™** (slug: magazinify-ai)
    - AI magazine and publication creation
    - Keywords: magazine, publication, article, editorial
 
-5. **AffiliateLedger AI™** (slug: affiliateledger-ai)
+6. **AffiliateLedger AI™** (slug: affiliateledger-ai)
    - Affiliate program management
    - Keywords: affiliate, commission, referral, partner program
 
-6. **RFPMatch AI™** (slug: rfpmatch-ai)
+7. **RFPMatch AI™** (slug: rfpmatch-ai)
    - Government/enterprise RFP (Request for Proposal) matching
    - Keywords: RFP, proposal, bid, government contract, procurement
    - NOTE: "job matching" is NOT this product - that's CareerPilot AI
