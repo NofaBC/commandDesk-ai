@@ -1,11 +1,17 @@
 import { NextResponse } from 'next/server';
 import { Pinecone } from '@pinecone-database/pinecone';
+import { verifySession } from '@/lib/firebase/session';
 
 /**
  * List all unique filenames in a Pinecone namespace
  * GET /api/debug/list-vectors?product=careerpilot-ai
  */
 export async function GET(request: Request) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const product = searchParams.get('product') || 'careerpilot-ai';

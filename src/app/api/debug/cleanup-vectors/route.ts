@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Pinecone } from '@pinecone-database/pinecone';
+import { verifySession } from '@/lib/firebase/session';
 
 /**
  * Delete vectors matching a filename pattern
@@ -7,6 +8,11 @@ import { Pinecone } from '@pinecone-database/pinecone';
  * Body: { product: "careerpilot-ai", filenamePattern: "02-pricing-plans.md" }
  */
 export async function POST(request: Request) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
     const { product = 'careerpilot-ai', filenamePattern, dryRun = true } = body;

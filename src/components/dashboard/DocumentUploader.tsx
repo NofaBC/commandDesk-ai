@@ -6,11 +6,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Upload, FileText } from 'lucide-react';
 
 const PRODUCTS = [
-  { value: 'dlyn-ai', label: 'Dlyn-AI™' },
+  { value: 'nofa-ai-factory', label: 'NOFA AI Factory™' },
+  { value: 'dlyn-ai', label: 'Dlyn AI™' },
   { value: 'intelliscan-ai', label: 'IntelliScan AI™' },
-  { value: 'magazinify-ai', label: 'MagazinifyAI™' },
+  { value: 'magazinify-ai', label: 'Magazinify AI™' },
   { value: 'rfpmatch-ai', label: 'RFPMatch AI™' },
   { value: 'techsupport-ai', label: 'TechSupport AI™' },
+  { value: 'commanddesk-ai', label: 'CommandDesk AI™' },
   { value: 'visionwing', label: 'VisionWing™' },
   { value: 'affiliateledger-ai', label: 'AffiliateLedger AI™' },
   { value: 'general', label: 'General (All Products)' },

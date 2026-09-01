@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { classifyEmail } from '@/lib/ai/classifier';
+import { verifySession } from '@/lib/firebase/session';
 
 /**
  * POST /api/classify
@@ -8,6 +9,11 @@ import { classifyEmail } from '@/lib/ai/classifier';
  * Accepts an email and returns the AI classification without routing.
  */
 export async function POST(request: NextRequest) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
     const { subject, bodyText, from } = body;

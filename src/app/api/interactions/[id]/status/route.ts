@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase/admin';
+import { verifySession } from '@/lib/firebase/session';
 import type { InteractionStatus } from '@/types';
 
 /**
@@ -10,6 +11,11 @@ export async function PATCH(
   request: NextRequest,
   props: { params: Promise<{ id: string }> }
 ) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const params = await props.params;
     const { id } = params;

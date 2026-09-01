@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { uploadDocument } from '@/lib/knowledge-base/uploader';
+import { verifySession } from '@/lib/firebase/session';
 import type { KBFileType } from '@/types';
 
 /**
@@ -9,6 +10,11 @@ import type { KBFileType } from '@/types';
  * Accepts multipart/form-data with file and product fields.
  */
 export async function POST(request: NextRequest) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File;

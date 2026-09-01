@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { google } from 'googleapis';
+import { verifySession } from '@/lib/firebase/session';
 
 /**
  * GET /api/debug/test-connections
@@ -7,6 +8,10 @@ import { google } from 'googleapis';
  * Test all service connections without processing emails.
  */
 export async function GET() {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   const results = {
     gmail: { status: 'unknown', message: '' },
     firebase: { status: 'unknown', message: '' },

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { findSubscriberByEmail } from '@/lib/firebase/subscribers';
 import { verifySubscriber } from '@/lib/auth/subscriber';
+import { verifySession } from '@/lib/firebase/session';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,6 +10,10 @@ export const dynamic = 'force-dynamic';
  * GET /api/debug/subscriber?email=fnasserg@gmail.com
  */
 export async function GET(request: Request) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   const { searchParams } = new URL(request.url);
   const email = searchParams.get('email');
 

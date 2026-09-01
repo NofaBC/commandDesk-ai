@@ -14,11 +14,18 @@ import type { PollResult } from '@/types';
  */
 export async function GET(request: Request) {
   try {
-    // Verify cron secret to prevent unauthorized access
+    // Verify cron secret — fail-closed: always required.
+    // In production Vercel Cron automatically sends Bearer <CRON_SECRET>.
+    // Set CRON_SECRET in your environment variables.
     const authHeader = request.headers.get('authorization');
     const cronSecret = process.env.CRON_SECRET;
 
-    if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+    if (!cronSecret) {
+      console.error('[poll] CRON_SECRET env var is not set — refusing request');
+      return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
+    }
+
+    if (authHeader !== `Bearer ${cronSecret}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

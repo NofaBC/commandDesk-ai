@@ -12,11 +12,18 @@ import type { TechSupportWebhookPayload } from '@/types';
  */
 export async function POST(request: NextRequest) {
   try {
-    // Verify webhook secret
+    // Verify webhook secret — fail-closed: always required.
+    // TechSupport AI must send Authorization: Bearer <WEBHOOK_SECRET>.
+    // Set WEBHOOK_SECRET in your environment variables.
     const authHeader = request.headers.get('authorization');
     const webhookSecret = process.env.WEBHOOK_SECRET;
 
-    if (webhookSecret && authHeader !== `Bearer ${webhookSecret}`) {
+    if (!webhookSecret) {
+      console.error('[webhook] WEBHOOK_SECRET env var is not set — refusing request');
+      return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
+    }
+
+    if (authHeader !== `Bearer ${webhookSecret}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

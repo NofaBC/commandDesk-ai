@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { LogoutButton } from '@/components/auth/LogoutButton';
 import {
   LayoutDashboard,
   Settings,
@@ -65,9 +66,12 @@ export function Sidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="flex-shrink-0 px-4 py-4 border-t">
-          <p className="text-xs text-gray-400">NOFA AI Factory</p>
-          <p className="text-xs text-gray-400">CommandDesk AI™ v0.1.0</p>
+        <div className="flex-shrink-0 px-4 py-4 border-t space-y-3">
+          <LogoutButton />
+          <div>
+            <p className="text-xs text-gray-400">NOFA AI Factory</p>
+            <p className="text-xs text-gray-400">CommandDesk AI™ v0.1.0</p>
+          </div>
         </div>
       </div>
     </aside>

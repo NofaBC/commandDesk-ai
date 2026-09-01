@@ -1,12 +1,18 @@
 import { NextResponse } from 'next/server';
 import { Pinecone } from '@pinecone-database/pinecone';
 import OpenAI from 'openai';
+import { verifySession } from '@/lib/firebase/session';
 
 /**
  * Debug endpoint to test Pinecone retrieval with detailed match info
  * GET /api/debug/pinecone?query=YOUR_QUERY&product=careerpilot-ai
  */
 export async function GET(request: Request) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('query');

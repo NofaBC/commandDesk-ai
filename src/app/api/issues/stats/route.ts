@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase/admin';
+import { verifySession } from '@/lib/firebase/session';
 import type { IssueCategory, Interaction } from '@/types';
 
 /**
@@ -10,6 +11,11 @@ import type { IssueCategory, Interaction } from '@/types';
  *   - range: 'today' | 'week' | 'month' (default: 'week')
  */
 export async function GET(request: NextRequest) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const range = searchParams.get('range') || 'week';

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { processEmail } from '@/lib/routing/router';
+import { verifySession } from '@/lib/firebase/session';
 import type { ParsedEmail } from '@/lib/email/gmail';
 
 /**
@@ -12,6 +13,11 @@ import type { ParsedEmail } from '@/lib/email/gmail';
  * Useful for testing or manual processing.
  */
 export async function POST(request: NextRequest) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
     const { id, threadId, from, fromName, to, subject, emailBody, receivedAt } =

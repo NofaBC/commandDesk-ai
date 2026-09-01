@@ -76,15 +76,18 @@ The platform is designed to help SaaS founders, startups, and businesses reduce 
 
 CommandDesk AI™ is part of the broader NOFA AI Factory™ ecosystem:
 
-- **CommandDesk AI™**: Customer support automation (this product)
-- **TechSupport AI™**: Technical escalation and complex issue resolution
-- **CareerPilot AI™**: AI-powered resume builder and job search platform
-- **AffiliateLedger AI™**: Affiliate tracking and reporting
-- **VisionWing™**: Visual content creation
-- **MagazinifyAI™**: Content transformation
-- **RFPMatch AI™**: RFP matching and response generation
+- **NOFA AI Factory™**: The central AI production system behind all products (https://www.nofaaifactory.com/)
+- **CommandDesk AI™**: Customer communication, email automation, knowledge retrieval, and support routing (this product)
+- **TechSupport AI™**: Technical case management, escalation, and issue resolution
+- **Dlyn AI™**: AI-powered job search and career assistant (formerly CareerPilot AI™) — Live on Stripe
+- **IntelliScan AI™**: AI website scanner that recommends AI tools and solutions — Live and Active
+- **Magazinify AI™**: AI-powered content and branding tool — Live on Stripe
+- **NOFA Command Core™**: Future central command system for monitoring all Factory products (In Development)
+- **NOFA Priority Engine™**: AI decision engine for product prioritization (Planning Stage)
 
-These systems can work together to automate operations across multiple business functions.
+CommandDesk AI™ is the official customer-facing communication hub for the entire NOFA AI Factory™ ecosystem. It scales with the Factory, supporting every public AI product and internal AI engine. TechSupport AI™ handles technical case management and escalation.
+
+These systems work together to automate operations across multiple business functions without requiring a redesign of the support architecture as new products are launched.
 
 ---
 
@@ -182,7 +185,9 @@ commanddesk-ai/
 │   └── types/
 ├── knowledge-base/                     # Training data
 │   ├── careerpilot-ai/
-│   └── commanddesk-ai/
+│   ├── commanddesk-ai/
+│   ├── intelliscan-ai/
+│   └── nofa-ai-factory/
 ├── public/
 ├── scripts/
 └── vercel.json                         # Cron configuration

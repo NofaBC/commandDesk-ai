@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { deleteDocument } from '@/lib/knowledge-base/uploader';
+import { verifySession } from '@/lib/firebase/session';
 
 /**
  * DELETE /api/knowledge-base/[id]
@@ -10,6 +11,11 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const { id } = await params;
 
