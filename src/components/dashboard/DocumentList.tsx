@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { FileText, Trash2, AlertCircle } from 'lucide-react';
 import type { KBDocument } from '@/types';
 import { formatDate } from '@/lib/utils';
+import { getProductLabels } from '@/lib/products/registry';
 
 interface DocumentListProps {
   documents: KBDocument[];
@@ -20,15 +21,8 @@ const statusVariants: Record<string, 'success' | 'warning' | 'info' | 'danger'> 
   uploading: 'warning',
 };
 
-const PRODUCT_LABELS: Record<string, string> = {
-  'careerpilot-ai': 'CareerPilot AI™',
-  'magazinify-ai': 'MagazinifyAI™',
-  'rfpmatch-ai': 'RFPMatch AI™',
-  'techsupport-ai': 'TechSupport AI™',
-  visionwing: 'VisionWing™',
-  'affiliateledger-ai': 'AffiliateLedger AI™',
-  general: 'General',
-};
+// Derived from the NOFA Product Registry - add products there, not here.
+const PRODUCT_LABELS: Record<string, string> = getProductLabels();
 
 export function DocumentList({ documents, onDelete }: DocumentListProps) {
   const [deleting, setDeleting] = useState<string | null>(null);

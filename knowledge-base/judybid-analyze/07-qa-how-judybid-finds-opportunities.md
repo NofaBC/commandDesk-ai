@@ -1,0 +1,3 @@
+JudyBid Analyze™ quick answer - How JudyBid finds government contracts
+
+JudyBid finds government contracts by searching connected live sources using your business profile. Federal opportunities come from SAM.gov (notices posted in the last 90 days, searched with your NAICS codes and capability keywords). State, local, and education opportunities come from connected SLED sources, narrowed to the states in your service area. JudyBid then scores each result from 0 to 100% for fit and explains why it looks relevant and what to double-check. Live search requires an active JudyBid subscription ($99 per month). Web app: https://www.judybid.com/

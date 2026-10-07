@@ -4,19 +4,10 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Upload, FileText } from 'lucide-react';
+import { getKnowledgeProductOptions } from '@/lib/products/registry';
 
-const PRODUCTS = [
-  { value: 'nofa-ai-factory', label: 'NOFA AI Factory™' },
-  { value: 'dlyn-ai', label: 'Dlyn AI™' },
-  { value: 'intelliscan-ai', label: 'IntelliScan AI™' },
-  { value: 'magazinify-ai', label: 'Magazinify AI™' },
-  { value: 'rfpmatch-ai', label: 'RFPMatch AI™' },
-  { value: 'techsupport-ai', label: 'TechSupport AI™' },
-  { value: 'commanddesk-ai', label: 'CommandDesk AI™' },
-  { value: 'visionwing', label: 'VisionWing™' },
-  { value: 'affiliateledger-ai', label: 'AffiliateLedger AI™' },
-  { value: 'general', label: 'General (All Products)' },
-];
+// Derived from the NOFA Product Registry - add products there, not here.
+const PRODUCTS = getKnowledgeProductOptions();
 
 interface DocumentUploaderProps {
   onUploadComplete?: () => void;

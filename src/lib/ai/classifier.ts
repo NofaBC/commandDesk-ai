@@ -1,47 +1,31 @@
 import OpenAI from 'openai';
 import type { EmailClassification, IntentCategory, Severity, IssueCategory } from '@/types';
+import {
+  buildClassifierProductList,
+  buildClassifierRules,
+  detectExplicitProducts,
+  resolveProduct,
+} from '@/lib/products/identify';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const SYSTEM_PROMPT = `You are CommandDesk AI, an email classification system for NOFA AI Factory.
+/**
+ * The product list and product-specific disambiguation rules are generated from
+ * the NOFA Product Registry (src/lib/products/registry.ts). To add a product,
+ * add a registry entry - do not edit this prompt.
+ */
+export function buildSystemPrompt(): string {
+  return `You are CommandDesk AI, an email classification system for NOFA AI Factory.
 
 You analyze incoming customer support emails and extract structured metadata.
 
 NOFA AI Factory products (match carefully based on keywords):
 
-1. **Dlyn-AI™** (slug: dlyn-ai) — formerly known as CareerPilot AI
-   - Resume builder, CV creator, career platform
-   - Keywords: resume, CV, job search, job matching, career, cover letter, job application, employment, LinkedIn, job board, CareerPilot, Dlyn
-   - This is the ONLY product for job seekers and career-related features
-   - NOTE: If the email mentions "CareerPilot AI" or "CareerPilot", it refers to Dlyn-AI (rebranded)
-
-2. **TechSupport AI™** (slug: techsupport-ai)
-   - AI customer support system
-   - Keywords: support ticket, help desk, customer service
-
-3. **IntelliScan AI™** (slug: intelliscan-ai)
-   - AI-powered vulnerability scanner for web applications
-   - Keywords: security, vulnerability, scanner, penetration testing, OWASP, security scan, web security, exploit, XSS, SQL injection, API security
-
-4. **VisionWing™** (slug: visionwing)
-   - Visual content and image platform
-   - Keywords: image, photo, visual, design
-
-5. **MagazinifyAI™** (slug: magazinify-ai)
-   - AI magazine and publication creation
-   - Keywords: magazine, publication, article, editorial
-
-6. **AffiliateLedger AI™** (slug: affiliateledger-ai)
-   - Affiliate program management
-   - Keywords: affiliate, commission, referral, partner program
-
-7. **RFPMatch AI™** (slug: rfpmatch-ai)
-   - Government/enterprise RFP (Request for Proposal) matching
-   - Keywords: RFP, proposal, bid, government contract, procurement
-   - NOTE: "job matching" is NOT this product - that's CareerPilot AI
+${buildClassifierProductList()}
 
 IMPORTANT: If the email mentions resume, job, career, CV, cover letter, or employment-related features, it is ALWAYS Dlyn-AI (dlyn-ai), NOT RFPMatch AI.
 IMPORTANT: "CareerPilot AI" has been rebranded to "Dlyn-AI". Any mention of CareerPilot should be classified as dlyn-ai.
+${buildClassifierRules()}
 
 For each email, determine:
 1. **product**: Which NOFA product is referenced (use the slug from above, or "unknown")
@@ -70,6 +54,9 @@ Respond ONLY with valid JSON matching this schema:
   "language": string,
   "issueCategory": string
 }`;
+}
+
+const SYSTEM_PROMPT = buildSystemPrompt();
 
 export async function classifyEmail(
   subject: string,
@@ -99,21 +86,34 @@ export async function classifyEmail(
     const parsed = JSON.parse(content);
 
     // Validate and normalize
+    const confidence = Math.min(1, Math.max(0, parsed.confidence || 0.5));
+
+    // Canonicalize the product slug via the registry. If the model could not
+    // decide but the email explicitly names exactly one registered product,
+    // use that product. A confident model decision is never overridden.
+    const { product } = resolveProduct(
+      parsed.product,
+      confidence,
+      `${subject}\n${body}`
+    );
+
     return {
-      product: parsed.product || 'unknown',
+      product,
       intent: validateIntent(parsed.intent),
       severity: validateSeverity(parsed.severity),
       summary: parsed.summary || 'No summary available',
-      confidence: Math.min(1, Math.max(0, parsed.confidence || 0.5)),
+      confidence,
       language: parsed.language || 'en',
       issueCategory: validateIssueCategory(parsed.issueCategory, parsed.intent),
     };
   } catch (error) {
     console.error('Classification error:', error);
 
-    // Return a safe fallback classification
+    // Return a safe fallback classification. If the email explicitly names
+    // exactly one registered product, keep that product so KB retrieval still works.
+    const named = detectExplicitProducts(`${subject}\n${body}`);
     return {
-      product: 'unknown',
+      product: named.length === 1 ? named[0].slug : 'unknown',
       intent: 'general',
       severity: 'medium',
       summary: `Email from ${from}: ${subject}`,

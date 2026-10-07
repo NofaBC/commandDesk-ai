@@ -18,6 +18,7 @@ import {
 } from '@/lib/firebase/interactions';
 import { verifySubscriber } from '@/lib/auth/subscriber';
 import { getNonSubscriberResponse, getExpiredSubscriberResponse } from '@/lib/email/templates';
+import { getProspectCandidateProducts, isProspectEligible } from '@/lib/routing/prospect';
 import type { ParsedEmail } from '@/lib/email/gmail';
 
 export interface ProcessResult {
@@ -57,6 +58,14 @@ export async function processEmail(email: ParsedEmail): Promise<ProcessResult> {
     if (!subscriberResult.isSubscriber) {
       // Non-subscriber - send redirect email and skip full pipeline
       console.log(`Non-subscriber email from ${email.from}: ${subscriberResult.reason}`);
+
+      // Registry opt-in: products flagged prospectInquiries (e.g. JudyBid) may answer
+      // pre-sales / how-it-works / pricing questions from unknown senders using the
+      // product knowledge base. Everything else falls through to the redirect below.
+      if (subscriberResult.reason === 'not_found') {
+        const prospectResult = await tryProspectInquiry(email);
+        if (prospectResult) return prospectResult;
+      }
       
       // Determine response based on reason
       let responseBody: string;
@@ -183,6 +192,81 @@ export async function processEmail(email: ParsedEmail): Promise<ProcessResult> {
       error: errorMessage,
     };
   }
+}
+
+/**
+ * Answer a non-subscriber's product inquiry from the knowledge base when the
+ * product opted in (registry `prospectInquiries`). Returns null when the email
+ * is not eligible, so the caller sends the standard redirect instead.
+ */
+async function tryProspectInquiry(email: ParsedEmail): Promise<ProcessResult | null> {
+  // Cheap pre-filter: skip entirely unless the text concerns a prospect-enabled product.
+  if (getProspectCandidateProducts(`${email.subject}\n${email.body}`).length === 0) {
+    return null;
+  }
+
+  let classification: EmailClassification;
+  try {
+    classification = await classifyEmail(email.subject, email.body, email.from);
+  } catch (error) {
+    console.error('Prospect classification failed; using standard redirect:', error);
+    return null;
+  }
+
+  if (!isProspectEligible(classification)) return null;
+
+  console.log(
+    `Prospect inquiry for ${classification.product} from ${email.from} (${classification.intent})`
+  );
+
+  const interactionId = await createInteraction({
+    emailId: email.id,
+    threadId: email.threadId,
+    from: email.from,
+    fromName: email.fromName,
+    to: email.to,
+    subject: email.subject,
+    body: email.body,
+    routingOutcome: 'pending',
+    status: 'received',
+    slackNotified: false,
+    receivedAt: email.receivedAt,
+  });
+  await updateInteractionClassification(interactionId, classification);
+
+  const responseSent = await handleAutoReply(interactionId, email, classification);
+  await updateInteractionRouting(interactionId, 'auto_replied', {
+    status: 'responded',
+    respondedAt: new Date(),
+  } as Partial<Interaction>);
+
+  try {
+    await sendSlackNotification({
+      interactionId,
+      from: email.from,
+      subject: email.subject,
+      product: classification.product,
+      intent: classification.intent,
+      severity: classification.severity,
+      summary: `[Prospect inquiry] ${classification.summary}`,
+      routingOutcome: 'auto_replied',
+      responseSent,
+      needsHumanAttention: false,
+    });
+    await updateInteractionStatus(interactionId, responseSent ? 'responded' : 'escalated', {
+      slackNotified: true,
+    } as Partial<Interaction>);
+  } catch (slackError) {
+    console.error('Slack notification failed:', slackError);
+  }
+
+  return {
+    interactionId,
+    classification,
+    routingOutcome: 'auto_replied',
+    responseSent,
+    subscriberStatus: 'not_found',
+  };
 }
 
 /**

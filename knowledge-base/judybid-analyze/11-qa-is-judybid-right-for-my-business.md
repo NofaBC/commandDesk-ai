@@ -1,0 +1,3 @@
+JudyBid Analyze™ quick answer - Is JudyBid right for my business?
+
+JudyBid is designed for small businesses that want to find and screen government bid opportunities (federal, state, local, and education) before spending time on a response. It works best when you know your NAICS codes and services and want to see which opportunities match them. JudyBid does not write proposals, submit bids, give legal advice, or guarantee awards, and it can only search its connected sources. The subscription is $99 per month and includes up to 100 live searches per billing period. You can build your profile and add your capability statement before subscribing.

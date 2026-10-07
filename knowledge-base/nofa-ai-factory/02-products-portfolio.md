@@ -22,6 +22,11 @@ Status: Live on Stripe
 
 Magazinify AI™ is an AI-powered branding and visibility tool that helps businesses turn ideas into polished articles and magazine-style content. It delivers content creation at factory speed.
 
+JudyBid Analyze™
+Status: Available as a subscription web app (live search requires an active subscription)
+
+JudyBid Analyze™ (JudyBid™) is a government bid review and opportunity matching assistant for small businesses. It searches live federal (SAM.gov) and state, local, and education opportunity sources using a business profile and an optional capability statement, scores each opportunity for fit, and explains why it looks relevant and what to review. Web app: https://www.judybid.com/ . Support: supportdesk@nofabusinessconsulting.com. JudyBid Watch™ is a possible future path and is not currently available.
+
 Internal Factory Engines
 
 TechSupport AI™

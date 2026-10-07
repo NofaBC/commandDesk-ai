@@ -1,0 +1,3 @@
+JudyBid Analyze™ quick answer - Does JudyBid search state and local opportunities?
+
+Yes, JudyBid searches state, local, and education opportunities. Choose State / Local (or All Sources) as the Opportunity Source and list your states in Location / Service Area. Results come from connected SLED sources, so coverage depends on those sources and not every agency or portal is guaranteed. Some state and local results link only to a procurement portal home page, shown as Open Source Portal; use Copy # (solicitation number) or Copy Title to find the listing inside the portal. State and local listings usually have only a title, so specific keywords in your profile matter.

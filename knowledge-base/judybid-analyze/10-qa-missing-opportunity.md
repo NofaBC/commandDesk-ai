@@ -1,0 +1,3 @@
+JudyBid Analyze™ quick answer - JudyBid is not finding an opportunity I expected
+
+If JudyBid is not showing an expected opportunity, common causes are: it was posted more than 90 days ago, its NAICS code is not among the first 5 in your profile, your keywords are too generic or do not appear in its title or description, the selected Opportunity Source does not include it, your service area does not name its state, the connected source does not carry that agency or portal, or it scored low and sits lower in the list. Try All Sources and add the right NAICS code and specific keywords. If it is still missing, send the solicitation number or link, your NAICS codes and keywords, your service area, and the Opportunity Source you used to supportdesk@nofabusinessconsulting.com.

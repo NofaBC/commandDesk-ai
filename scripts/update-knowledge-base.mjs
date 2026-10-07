@@ -1,9 +1,23 @@
 /**
- * Knowledge Base Update Script
+ * Knowledge Base Update Script  (LEGACY - see docs/follow-ups.md, "Technical debt")
  * 
  * This script reads markdown files from the knowledge-base directory,
  * chunks them, generates embeddings, and updates Pinecone vectors.
+ *
+ * KNOWN PROBLEM: it upserts into Pinecone's DEFAULT namespace, but CommandDesk
+ * retrieval (src/lib/knowledge-base/retrieval.ts) only reads the per-product
+ * namespace (namespace == product slug) and then the 'general' namespace. Vectors
+ * written here are therefore never retrieved. Its chunking also differs from the
+ * dashboard uploader.
+ *
+ * Use `npm run sync-kb -- <product-slug>` instead; it goes through the same code
+ * path as the dashboard uploader and writes to the correct namespace.
+ *
+ * GUARD: products listed in REGISTRY_MANAGED_PRODUCTS are skipped so this legacy
+ * script can never write their knowledge into the wrong namespace.
  */
+
+const REGISTRY_MANAGED_PRODUCTS = new Set(['judybid-analyze']);
 
 import { readFileSync, readdirSync, statSync } from 'fs';
 import { join, relative } from 'path';
@@ -156,7 +170,15 @@ async function main() {
 
   // Find all markdown files
   const kbDir = join(process.cwd(), 'knowledge-base');
-  const files = findMarkdownFiles(kbDir);
+  const allFiles = findMarkdownFiles(kbDir);
+  const files = allFiles.filter((f) => !REGISTRY_MANAGED_PRODUCTS.has(extractProductSlug(f)));
+  const skipped = allFiles.length - files.length;
+  if (skipped > 0) {
+    console.log(
+      `Skipping ${skipped} file(s) for registry-managed products (${[...REGISTRY_MANAGED_PRODUCTS].join(', ')}). ` +
+        'Use `npm run sync-kb -- <product-slug>` for those.\n'
+    );
+  }
 
   console.log(`Found ${files.length} markdown files\n`);
 

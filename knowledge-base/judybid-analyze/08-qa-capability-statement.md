@@ -1,0 +1,3 @@
+JudyBid Analyze™ quick answer - How to upload a capability statement and what JudyBid does with it
+
+To upload a capability statement in JudyBid, sign in, open Business Profile, and under Upload Capability Statement choose a PDF or TXT file up to 5 MB, or paste the text into the Paste Capability Statement box. JudyBid reads the text in your browser and uses it to find keywords, possible NAICS codes, set-aside terms, and state names for matching. It does not grade or rewrite the statement. Scanned or image-only PDFs cannot be read because JudyBid has no OCR, and Word files are not supported, so paste the text instead.

@@ -1,29 +1,38 @@
 import OpenAI from 'openai';
 import type { EmailClassification } from '@/types';
 import { queryKnowledgeBase, formatContextForPrompt } from '@/lib/knowledge-base/retrieval';
+import {
+  findScriptedReply,
+  getClassifiableProducts,
+  getProduct,
+  getProductUrl,
+  getSupportEmail,
+} from '@/lib/products/registry';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-/**
- * Get product-specific URL for directing customers
- */
-function getProductUrl(productSlug: string): string {
-  const productUrls: Record<string, string> = {
-    'dlyn-ai': 'https://nofabusinessconsulting.com/dlyn-ai/',
-    'careerpilot-ai': 'https://nofabusinessconsulting.com/careerpilot-ai/',
-    'techsupport-ai': 'https://nofabusinessconsulting.com/techsupport-ai/',
-    'intelliscan-ai': 'https://nofabusinessconsulting.com/intelliscan-ai/',
-    'visionwing': 'https://nofabusinessconsulting.com/visionwing/',
-    'magazinifyai': 'https://nofabusinessconsulting.com/magazinifyai/',
-    'affiliateledger-ai': 'https://nofabusinessconsulting.com/affiliateledger-ai/',
-    'rfpmatch-ai': 'https://nofabusinessconsulting.com/rfpmatch-ai/',
-  };
-
-  return productUrls[productSlug] || 'https://nofabusinessconsulting.com';
+/** "Dlyn-AI™ (formerly CareerPilot AI™), TechSupport AI™, ..." from the registry. */
+function getProductListText(): string {
+  return getClassifiableProducts()
+    .map((p) =>
+      p.formerNames?.length
+        ? `${p.name} (formerly ${p.formerNames.map((n) => `${n}™`).join(', ')})`
+        : p.name
+    )
+    .join(', ');
 }
 
-function getSystemPrompt(productSlug: string): string {
+function getProductGuidance(productSlug: string): string {
+  const rules = getProduct(productSlug)?.responderGuidance;
+  if (!rules?.length) return '';
+  return `\n\nProduct-specific rules for ${getProduct(productSlug)?.name}:\n${rules
+    .map((r) => `- ${r}`)
+    .join('\n')}`;
+}
+
+export function getSystemPrompt(productSlug: string): string {
   const productUrl = getProductUrl(productSlug);
+  const supportEmail = getSupportEmail(productSlug);
   
   return `You are CommandDesk AI, the automated support responder for NOFA AI Factory.
 
@@ -31,10 +40,10 @@ You write helpful, professional, and concise email replies to customers.
 
 Company context:
 - Company: NOFA AI Factory (NOFA Business Consulting LLC)
-- Products: Dlyn-AI™ (formerly CareerPilot AI™), TechSupport AI™, IntelliScan AI™, VisionWing™, MagazinifyAI™, AffiliateLedger AI™, RFPMatch AI™
+- Products: ${getProductListText()}
 - Website: nofabusinessconsulting.com
 - Product page: ${productUrl}
-- Support email: support@nofabusinessconsulting.com
+- Support email: ${supportEmail}
 
 Guidelines:
 - Be warm but professional
@@ -48,7 +57,7 @@ Guidelines:
 - Sign off as "NOFA AI Support Team"
 - Do NOT attempt to solve technical issues — those are routed separately
 
-IMPORTANT: You are writing the BODY of the email only. Do not include subject lines.`;
+IMPORTANT: You are writing the BODY of the email only. Do not include subject lines.${getProductGuidance(productSlug)}`;
 }
 
 export async function generateAutoReply(
@@ -58,11 +67,28 @@ export async function generateAutoReply(
   classification: EmailClassification
 ): Promise<string> {
   try {
+    // Registry-defined restricted topics get a fixed, pre-approved reply (no retrieval, no LLM).
+    const scripted = findScriptedReply(classification.product, `${subject}\n${body}`);
+    if (scripted) {
+      console.log(`Scripted reply '${scripted.name}' used for ${classification.product}`);
+      return scripted.reply;
+    }
+
     // Query knowledge base for relevant context
     const contexts = await queryKnowledgeBase(
       classification.product,
       subject + '\n' + body
     );
+
+    // Products flagged requireKnowledge must be answered from the KB only.
+    // If retrieval found nothing, send a safe holding reply rather than letting
+    // the model answer from memory (it has no built-in knowledge of the product).
+    if (getProduct(classification.product)?.requireKnowledge && contexts.length === 0) {
+      console.warn(
+        `No KB context for ${classification.product}; sending knowledge-unavailable reply`
+      );
+      return getKnowledgeUnavailableResponse(classification.product);
+    }
 
     const contextPrompt = formatContextForPrompt(contexts);
 
@@ -88,7 +114,8 @@ Subject: ${subject}
 ${body}`,
         },
       ],
-      temperature: 0.4,
+      // Grounded-only products answer conservatively from the retrieved documentation.
+      temperature: getProduct(classification.product)?.requireKnowledge ? 0.1 : 0.4,
       max_tokens: 500,
     });
 
@@ -101,15 +128,32 @@ ${body}`,
   } catch (error) {
     console.error('Auto-reply generation error:', error);
 
+    // Grounded-only products never fall back to generic intent templates that
+    // may reference features that product does not have (e.g. a billing dashboard).
+    if (getProduct(classification.product)?.requireKnowledge) {
+      return getKnowledgeUnavailableResponse(classification.product);
+    }
+
     // Return a safe fallback response
     return getFallbackResponse(classification);
   }
 }
 
+export function getKnowledgeUnavailableResponse(productSlug: string): string {
+  const product = getProduct(productSlug);
+  const name = product?.name ?? 'our products';
+  return `Thank you for contacting NOFA AI Support about ${name}.
+
+We've received your message. You can learn more about ${name} at ${getProductUrl(productSlug)}. If you need a specific answer, please reply to this email with a few more details or contact us at ${getSupportEmail(productSlug)}, and our team will help.
+
+Best regards,
+NOFA AI Support Team`;
+}
+
 function getFallbackResponse(classification: EmailClassification): string {
-  const name = classification.product !== 'unknown' 
+  const name = getProduct(classification.product)?.name ?? (classification.product !== 'unknown' 
     ? classification.product.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
-    : 'our products';
+    : 'our products');
 
   switch (classification.intent) {
     case 'billing':

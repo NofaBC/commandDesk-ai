@@ -226,7 +226,7 @@ Yes. There are no long-term contracts. You can cancel at any time:
 - After 90 days, all data is permanently deleted
 
 ### Can I get a refund?
-We offer a 30-day money-back guarantee on all paid plans. Contact support@nofabusinessconsulting.com with your refund request.
+We offer a 30-day money-back guarantee on all paid plans. Contact supportdesk@nofabusinessconsulting.com with your refund request.
 
 ### How do I add team members?
 Team member access is available on Business plans:
